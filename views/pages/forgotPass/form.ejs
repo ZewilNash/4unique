@@ -1,0 +1,85 @@
+
+
+<div class="form container hide" style="height: 100vh;overflow-y: scroll;">
+    
+    <div class="row" style="height: 100%;overflow-y: scroll;">
+        
+        <div class="col-md-12" style="display: flex;justify-content: center;align-items: center;height: auto;flex-direction: column;overflow-y: scroll;">
+            <img style="width: 150px;height: 150px;object-fit: contain;margin-bottom: 20px;" src="./images/logo.png" alt="">
+            <h1 data-lang="up_1" style="font-size: 40px;text-align: center;">YOU ARE ALMOST THERE</h1>
+            <p id="head_1" data-lang="up_2" style="font-size:30px;text-align: center;margin-top: 15px;">JUST TYPE YOUR EMAIL!</p>
+            <small id="head_2" data-lang="up_3" style="font-size: 20px;text-align: center;margin-top: 15px;">WE WILL SEND YOU CODE TO YOUR EMAIL!</small>
+
+            <div id="not-code" style="height: 100%" class="">
+            
+              
+                <form style="display: flex;justify-content: center;align-items: center;height: 130%;">
+                    <label data-lang="up_4" for="">
+                        email
+                    </label>
+                    <input 
+                    id="email"
+                     type="text">
+    
+
+                    <button data-lang="up_7" id="forgotPass-link">CONFIRM</button>
+
+                    <a  style="color: #000;" href="/login">BACK TO LOGIN</a>
+                    
+                </form>
+
+
+
+            </div>
+            <div style="height: 100%"  id="code_container" class="hide">
+            
+              
+                <form style="display: flex;justify-content: center;align-items: center;height: 130%;">
+                    <label data-lang="up_8" for="">
+                       your code
+                    </label>
+                    <input 
+                    id="code"
+                     type="text">
+
+                    <label data-lang="up_9" for="">
+                       your new password
+                    </label>
+                    <input 
+                    id="newPass"
+                     type="password">
+
+                     <i id="showPass" style="cursor: pointer;" class="fa-solid fa-eye"></i>
+
+                     <i style="cursor: pointer;" id="hidePass" class="fa-solid fa-eye-slash hide"></i>
+
+                    <label data-lang="up_10" for="">
+                       confirm password
+                    </label>
+                    <input 
+                    id="confirmNewPass"
+                     type="password">
+
+
+    
+
+                    <button data-lang="up_11" id="resetPass-link">RESET PASSWORD</button>
+
+                    <a id="back_from_forgot" style="color: #000;" href="#">BACK</a>
+                    
+                </form>
+
+
+
+            </div>
+
+        </div>
+        
+        
+      
+
+    </div>
+
+    <div style="position: absolute;top: 0;left: 50%;transform: translateX(-50%)" id="errors"></div>
+    <div id="success" style="position: absolute;top: 0;left: 50%;transform: translateX(-50%);"></div>
+</div>
