@@ -83,6 +83,10 @@ app.get("/home" , (req,res) => {
     return res.render("pages/home/index")
 })
 
+app.get("/products" , (req,res) => {
+    return res.render("pages/products/index")
+})
+
 app.get("/register" , (req,res) => {
     return res.render("pages/register/index")
 })
