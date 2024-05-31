@@ -10,9 +10,11 @@ window.onload = () => {
     }
 
     document.querySelector(".main").style.display = "none";
+    document.querySelector(".main").classList.toggle("hide")
 
     setTimeout(() => {
         document.querySelector(".main").style.display = "block";
+        document.querySelector(".main").classList.toggle("hide")
         document.querySelector(".loader").style.display = "none";
     }, 4000)
 
