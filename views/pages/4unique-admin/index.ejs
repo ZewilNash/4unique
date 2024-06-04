@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <!-- security other urls usage -->
+
+  <!-- end -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tac+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/4unique-admin.css">
+  <link rel="icon" href="./images/food4unique.png" type="image/x-icon" />
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tac+One&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>FOOD4UNIQUE - 4unique-admin</title>
+</head>
+
+
+<body>
+
+  <div id="secure">
+
+    <div style="position: fixed;" id="success"></div>
+    <div id="errors" style="position: fixed;"></div>
+
+    <div class="container mt-5">
+      <div class="row">
+
+        <div class="col-md-4 mt-5"
+          style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;padding: 10px;width: 100vw;text-align: center;display: flex;flex-direction: column;justify-content: center;align-items: center;background-color: coral;color: #fff;">
+          <h1>ORDERS</h1>
+          <h1><%= bookedordersLength %></h1>
+        </div>
+        <div class="col-md-4 mt-5"
+          style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;padding: 10px;width: 100vw;text-align: center;display: flex;flex-direction: column;justify-content: center;align-items: center;background-color: coral;color: #fff;">
+          <h1>PRODUCTS</h1>
+          <h1><%= productsLength %></h1>
+        </div>
+        <div class="col-md-4 mt-5"
+          style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;padding: 10px;width: 100vw;text-align: center;display: flex;flex-direction: column;justify-content: center;align-items: center;background-color: coral;color: #fff;">
+          <h1>USERS</h1>
+          <h1><%= usersLength %></h1>
+        </div>
+        <div class="col-md-4 mt-5"
+          style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;padding: 10px;width: 100vw;text-align: center;display: flex;flex-direction: column;justify-content: center;align-items: center;background-color: coral;color: #fff;">
+          <h1>REPORTS</h1>
+          <h1><%= reportsLength %></h1>
+        </div>
+
+
+      </div>
+    </div>
+
+    <!-- show all reviews -->
+    <div class="hide container" id="show_all_reviews">
+      <div class="row">
+        <% for(var i = 0; i < reviews.length; i++) { %>
+        <div
+          style="text-align: center;align-items: center;justify-content: center;width: 100%;height: 100%;background-image: url('<%= reviews[i].review_image %>');box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;flex-direction: column;margin-top: 20px;display: flex;"
+          class="col-md-4 mt-5">
+          <h1>REVIEW FOR <%= reviews[i].food.name %></h1>
+          <h1>REVIEW LINK:</h1>
+          <a href=" <%= reviews[i].review_link %>">Review Link</a>
+
+          <a data-review-id="<%= reviews[i]._id  %>" id="delete_review" href="#"
+            style="text-align: center;color: red;margin-top: 10px;">DELETE</a>
+
+        </div>
+
+        <% } %>
+      </div>
+
+    </div>
+    <!-- end show reviews -->
+
+    <div class="hide" id="create_review">
+      <form action="#"
+        style="display: flex;justify-content: center;align-items: center;height: 100%;width: 100%;flex-direction: column;padding: 30px;">
+
+        <label for="category">FOOD NAME <em>&#x2a;</em></label>
+
+        <input id="food_id" name="category" required="" type="text" />
+
+        <label for="name">REVIEW LINK <em>&#x2a;</em></label>
+
+        <input id="review_link" name="name" required="" type="text" />
+
+
+        <label for="image">IMAGE</label>
+
+        <input id="review_image" name="image" type="file" multiple class="input-field upload_widget_review"
+          accept="image/*" />
+
+
+        <button id="create-review">CREATE</button>
+
+
+
+      </form>
+    </div>
+
+    <!-- all completed orders -->
+    <div id="all_completed_orders_container" class="hide">
+      <div class="container">
+        <div class="row">
+          <a id="delete_all_completed" style="color: red;font-size: 30px;margin-top: 20px;margin-bottom: 20px;"
+            href="#">DELETE ALL</a>
+          <% for(var i = 0; i < completedOrders.length; i++) { %>
+          <div id="order_container"
+            style="width: 100vw;height: auto;display: flex;justify-content: center;align-items: center;flex-direction: column;box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;"
+            class="col-md-12 mt-4">
+            <p style="text-align: center;">ORDER NUMBER: <%=  completedOrders[i].order_num %></p>
+            <p style="text-align: center;">ORDER ID: <%=  completedOrders[i]._id %></p>
+            <p style="text-align: center;">ORDER DATE: <%=  completedOrders[i].date %></p>
+            <p style="text-align: center;">ORDER TIME: <%=  completedOrders[i].time %></p>
+
+            <p style="text-align: center;">Made By : <%=  completedOrders[i].name %></p>
+            <p style="text-align: center;">Order Owner Email : <%=  completedOrders[i].email %></p>
+            <p style="text-align: center;">Order Owner phone : <%=  completedOrders[i].phone %></p>
+            <p style="text-align: center;">Order Owner address : <%=  completedOrders[i].address %></p>
+
+            <div style="font-size: 22px;" class="d-flex gap-3 mt-3">
+              <span style="font-size:15px;text-align: center;">owner state: <%=  completedOrders[i].state %></span>
+              <span style="font-size:15px;text-align: center;">owner country: <%=  completedOrders[i].country %></span>
+              <span style="font-size:15px;text-align: center;">owner village: <%=  completedOrders[i].village %></span>
+              <span style="font-size:15px;text-align: center;">owner leisure: <%=  completedOrders[i].leisure %></span>
+            </div>
+
+            <div style="font-size: 18px;" class="d-flex gap-3 mt-3">
+              <span>order Owner Zip Code: <%=  completedOrders[i].zip_code %></span>
+              <span>order status: <%=  completedOrders[i].status %></span>
+              <span>order isPaid: <%=  completedOrders[i].isPaid %></span>
+
+            </div>
+
+            <p style="text-align: center;">Order Date & Time : <%=  completedOrders[i].createdAt %></p>
+
+            <div style="font-size: 20px;" class="d-flex gap-3 mt-3">
+              <a data-order-id="<%= completedOrders[i]._id %>" id="completedOrder_show_more" href="#"
+                style="color:green">Show More</a>
+              <a data-order-id="<%= completedOrders[i]._id %>" href="#" id="completedOrder_delete"
+                style="color:red;">Delete Order</a>
+
+
+
+
+            </div>
+
+
+
+          </div>
+          <% } %>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- all users -->
+    <div id="all_users_container" class="hide">
+      <div class="container">
+        <div class="row">
+          <% for(var i = 0; i < users.length; i++) { %>
+          <div
+            style="display: flex;justify-content: center;align-items: center;margin-top: 20px;flex-direction: column;box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;"
+            class="col-md-6">
+            <h1><%= users[i].fullname %></h1>
+            <h1><%= users[i].email %></h1>
+            <h1><%= users[i].role %></h1>
+            <div style="display: flex;width: 100%;justify-content: space-between;" class="">
+              <a data-user-id="<%= users[i]._id %>" style="color: blue;font-size: 20px;" id="edit_user"
+                href="#">Edit</a>
+              <a data-user-id="<%= users[i]._id %>" style="color: red;font-size: 20px;" id="delete_user"
+                href="#">Delete</a>
+            </div>
+
+          </div>
+          <% } %>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- reports -->
+    <div id="all_users_reports_container" class="container hide">
+      <div class="row">
+
+        <input style="padding: 10px;" class="mt-5" id="report_text_Search" type="text"
+          placeholder="SEARCH REPORT BY ORDER ID">
+
+        <div id="report_container_search" class="hide">
+
+        </div>
+
+        <div id="con_report">
+          <% for(var i = 0; i < reports.length; i++) { %>
+
+
+          <div id="report_container"
+            style="width: 100vw;height: auto;display: flex;justify-content: center;align-items: center;flex-direction: column;box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;"
+            class="col-md-12 mt-4">
+            <p style="text-align: center;">ORDER ID: <%=  reports[i].order %></p>
+
+            <p style="text-align: center;">Report Content : <%=  reports[i].report %></p>
+
+            <p style="text-align: center;">Report Owner Name : <%=  reports[i].name %></p>
+
+            <p style="text-align: center;">Report Owner Email : <%=  reports[i].email %></p>
+
+            <p style="text-align: center;">Report Owner Phone : <%=  reports[i].phone %></p>
+
+            <p style="text-align: center;">Report Date & Time : <%=  reports[i].createdAt %></p>
+
+
+            <div style="font-size: 20px;" class="d-flex gap-3 mt-3">
+
+              <a data-order-id="<%= reports[i]._id %>" href="#" id="delete_report" style="color:red;">Delete Report</a>
+
+
+            </div>
+
+
+
+          </div>
+
+          <% } %>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- create category section -->
+
+    <!-- end create category -->
+    <div style="height: 100vh;width: 100vw;" class="hide" id="create_category_container">
+      <form action="#"
+        style="display: flex;justify-content: center;align-items: center;height: 100%;width: 100%;flex-direction: column;padding: 30px;">
+
+        <label for="name">CATEGORY NAME <em>&#x2a;</em></label>
+
+        <input id="cat_name" name="name" required="" type="text" />
+
+        <label for="image">CATEGORY POSTER IMAGE</label>
+
+        <input id="cat_images" name="image" type="file" multiple class="input-field upload_widget_category"
+          accept="image/*" />
+
+
+        <button id="create-category-btn">CREATE CATEGORY</button>
+
+        <small style="text-align: center;font-size: 17px;">
+          WHEN YOU CREATE THE CATEGORY YOU NEED TO CREATE FOODS THAT UNDER THIS CATEGORY SO IT WILL NOT SHOW EMPTY TO
+          CUSTOMERS
+        </small>
+
+      </form>
+
+
+
+    </div>
+    <!-- add product section -->
+
+    <!-- show all categories section -->
+
+    <div id="all_categories_container" class="hide">
+      <div class="container">
+        <div class="row">
+          <% for(var i = 0; i < categories.length; i++) { %>
+          <div
+            style="display: flex;justify-content: center;align-items: center;margin-top: 20px;flex-direction: column;box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;"
+            class="col-md-6">
+            <img src="<%= categories[i].image %>" alt="" style="width: 100%;height: 200px;object-fit: contain;">
+            <h1><%= categories[i].category %></h1>
+
+            <div style="display: flex;width: 100%;justify-content: space-between;" class="">
+
+            <a data-category-name="<%= categories[i].category%>"
+                style="color: blue;font-size: 20px;" id="edit_category" href="#">EDIT</a>
+
+              <a data-category-name="<%= categories[i].category %>" style="color: red;font-size: 20px;"
+                id="delete_category" href="#">Delete</a>
+
+
+            </div>
+
+            
+
+          </div>
+          <% } %>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- end show all categories -->
+
+    <div class="container mt-5">
+      <div class="row">
+
+        <div id="create_product_link" class="col-md-4 mt-5"
+          style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;padding: 10px;cursor: pointer;width: 100vw;text-align: center;">
+          CREATE PRODUCT
+        </div>
+
+        <div id="create_review_link" class="col-md-4 mt-5"
+          style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;padding: 10px;cursor: pointer;width: 100vw;text-align: center;">
+          CREATE REVIEW
+        </div>
+
+        <div id="create_category_link" class="col-md-4 mt-5"
+          style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;padding: 10px;cursor: pointer;width: 100vw;text-align: center;">
+          CREATE CATEGORY
+        </div>
+
+        <div id="all_products_link" class="col-md-4 mt-5"
+          style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;padding: 10px;cursor: pointer;width: 100vw;text-align: center;">
+          SHOW ALL PRODUCTS
+        </div>
+
+        <div id="all_reviews_link" class="col-md-4 mt-5"
+          style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;padding: 10px;cursor: pointer;width: 100vw;text-align: center;">
+          SHOW ALL REVIEWS
+        </div>
+
+        <div id="all_categories_link" class="col-md-4 mt-5"
+          style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;padding: 10px;cursor: pointer;width: 100vw;text-align: center;">
+          SHOW ALL CATEGORIES
+        </div>
+
+        <div id="all_booked_orders_link" class="col-md-4 mt-5"
+          style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;padding: 10px;cursor: pointer;width: 100vw;text-align: center;">
+          SHOW ALL ORDERS
+        </div>
+
+        <div id="all_completed_orders_link" class="col-md-4 mt-5"
+          style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;padding: 10px;cursor: pointer;width: 100vw;text-align: center;">
+          SHOW ALL COMPLETED ORDERS
+        </div>
+
+        <div id="all_users_link" class="col-md-4 mt-5"
+          style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;padding: 10px;cursor: pointer;width: 100vw;text-align: center;">
+          SHOW ALL USERS
+        </div>
+        <div id="all_users_reports_link" class="col-md-4 mt-5"
+          style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;padding: 10px;cursor: pointer;width: 100vw;text-align: center;">
+          SHOW ALL USERS REPORTS
+        </div>
+
+
+        <div id="logout" class="col-md-4 mt-5"
+          style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;padding: 10px;cursor: pointer;width: 100vw;text-align: center;">
+          LOGOUT
+        </div>
+      </div>
+    </div>
+
+    <div class="hide" id="booked_orders_container">
+      <input style="padding: 10px;" class="mt-5" id="booked_order_id_text" type="text" placeholder="SEARCH ORDER BY ID">
+      <div id="success_delete"></div>
+      <div id="booked_order_container_search"></div>
+
+      <div id="booked_order_container">
+        <% for(var i = 0; i < bookedOrders.length; i++) { %>
+
+
+        <div id="booked_order_container"
+          style="width: 100vw;height: auto;display: flex;justify-content: center;align-items: center;flex-direction: column;box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;"
+          class="col-md-12 mt-4">
+          <p style="text-align: center;">ORDER ID: <%=  bookedOrders[i]._id %></p>
+          <p style="text-align: center;">Order NUMBER : <%=  bookedOrders[i].order_num %></p>
+          <p style="text-align: center;">Order DATE : <%=  bookedOrders[i].date %></p>
+          <p style="text-align: center;">Order TIME : <%=  bookedOrders[i].time %></p>
+          <p style="text-align: center;">Made By : <%=  bookedOrders[i].name %></p>
+          <p style="text-align: center;">Order Owner Email : <%=  bookedOrders[i].email %></p>
+          <p style="text-align: center;">Order Owner phone : <%=  bookedOrders[i].phone %></p>
+
+          <p style="text-align: center;">Order Owner address : <%=  bookedOrders[i].address %></p>
+
+
+          <span style="font-size:15px;text-align: center;">owner state: <%=  bookedOrders[i].state %></span>
+          <span style="font-size:15px;text-align: center;">owner country: <%=  bookedOrders[i].country %></span>
+          <span style="font-size:15px;text-align: center;">owner village: <%=  bookedOrders[i].village %></span>
+          <span style="font-size:15px;text-align: center;">owner leisure: <%=  bookedOrders[i].leisure %></span>
+
+
+
+          <div style="font-size: 18px;" class="d-flex gap-3 mt-3">
+            <span>order Owner Zip Code: <%=  bookedOrders[i].zip_code %></span>
+            <span>order status: <%=  bookedOrders[i].status %></span>
+            <span>order isPaid: <%=  bookedOrders[i].isPaid %></span>
+
+          </div>
+
+          <p style="text-align: center;">Order Date & Time : <%=  bookedOrders[i].createdAt %></p>
+
+          <div style="font-size: 20px;" class="d-flex gap-3 mt-3">
+
+            <a data-order-id="<%= bookedOrders[i]._id %>" id="booked_order_show_more" href="#" style="color:green">Show
+              More</a>
+
+            <a data-order-id="<%= bookedOrders[i]._id %>" href="#" id="delete_booked_order" style="color:red;">Delete
+              Order</a>
+
+            <a data-order-id="<%= bookedOrders[i]._id %>" id="edit_booked_order_btn" href="#">Edit Order</a>
+
+          </div>
+
+
+
+        </div>
+
+        <% } %>
+      </div>
+    </div>
+
+
+    <div id="all_products_container" class="hide">
+      <div class="row">
+        <% for(var i = 0; i < products.length; i++) { %>
+        <div class="col-md-4 food-item">
+          <a href="#" class="mt-5 food-item">
+            <img src="<%= products[i].images[0] %>" />
+            <p><%= products[i].name %></p>
+            <span><%= products[i].price %></span>
+
+
+          </a>
+          <div style="display: flex;justify-content: space-between;width: 100%;font-size: 25px;cursor: pointer;"
+            class="footer">
+
+            <!--<i class="fa-solid fa-trash"></i> -->
+            <i data-bs-toggle="modal" data-bs-target="#edit_product_modal_<%= products[i].name.replace(/\s/g, '') %>"
+              data-food-id="<%= products[i]._id %>" id="update_link" class="fa-solid fa-pen-to-square"></i>
+
+            <i id="delete_food" data-food-id="<%= products[i]._id %>" class="fa-solid fa-trash"></i>
+
+          </div>
+
+        </div>
+        <div class="modal fade" id="edit_product_modal_<%= products[i].name.replace(/\s/g, '') %>" tabindex="-1"
+          aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+
+                <h5 class="modal-title" id="exampleModalLabel">EDIT <%= products[i].name %></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div style="position: fixed;" id="success-edit-p"></div>
+                <div style="position: fixed;" id="errors-edit-p"></div>
+                <form action="#">
+                  <input type="text" hidden id="id_edit">
+                  <label for="name">NAME <em>&#x2a;</em></label>
+
+                  <input value="<%= products[i].name %>" id="name_edit" name='name_<%= products[i].name %>' required="" type="text" />
+
+                  <label for="price">PRICE <em>&#x2a;</em></label>
+
+                  <input value="<%= products[i].price %>"  id="price_edit" name="price_<%= products[i].name  %>" required="" type="number" />
+
+                  <label for="category">CATEGORY <em>&#x2a;</em></label>
+
+                  <input value="<%= products[i].category %>"  id="category_edit" name="category_<%= products[i].name  %>" required=""
+                    type="text" />
+
+                  <label for="available_size">Available Sizes <em>&#x2a;</em></label>
+
+                  <input value="<%= products[i].size %>"  id="available_size_edit" name="size_<%= products[i].name  %>"required=""
+                    type="text" />
+
+                  <label for="customerNote">DESCRIPTION <em>&#x2a;</em></label>
+
+                  <textarea id="description_edit" name="description_<%= products[i].name  %>" required="" rows="4">
+                    <%= products[i].description %> 
+              </textarea>
+
+
+                  <label for="image">IMAGE</label>
+
+                  <input id="images_edit" name="image" type="file" multiple class="input-field upload_widget_edit"
+                    accept="image/*" />
+
+
+                  <button
+                  type="submit"
+                  data-food-name="<%= products[i].name %>"
+                  data-food-id="<%= products[i]._id %>"
+                  id="create-btn-edit">EDIT</button>
+
+                  <div class="mt-5" id="errors"></div>
+                  <div class="mt-5" id="success"></div>
+
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+
+    </div>
+
+    <!-- edit product modal -->
+    <!-- Modal -->
+
+    <!-- end modal edit product -->
+
+    <!-- create product -->
+    <div style="height: 100vh;width: 100vw;" class="hide" id="create_product_container">
+      <form action="#"
+        style="display: flex;justify-content: center;align-items: center;height: 100%;width: 100%;flex-direction: column;padding: 30px;">
+
+        <label for="name">NAME <em>&#x2a;</em></label>
+
+        <input id="name" name="name" required="" type="text" />
+
+        <label for="price">PRICE <em>&#x2a;</em></label>
+
+        <input id="price" name="price" required="" type="number" />
+
+        <label for="category">CATEGORY <em>&#x2a;</em></label>
+
+        <input id="category" name="category" required="" type="text" />
+
+        <label for="available_size">Available Sizes <em>&#x2a;</em></label>
+
+        <input id="available_size" name="available_size" required="" type="text" />
+
+        <label for="customerNote">DESCRIPTION <em>&#x2a;</em></label>
+
+        <textarea id="description" name="description" required="" rows="4"></textarea>
+
+
+        <label for="image">IMAGE</label>
+
+        <input id="images" name="image" type="file" multiple class="input-field upload_widget" accept="image/*" />
+
+
+        <button id="create-btn">CREATE</button>
+
+
+
+      </form>
+
+
+
+    </div>
+
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@simondmc/popup-js@1.4.3/popup.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.8/axios.min.js"
+    integrity="sha512-PJa3oQSLWRB7wHZ7GQ/g+qyv6r4mbuhmiDb8BjSFZ8NZ2a42oTtAq5n0ucWAwcQDlikAtkub+tPVCw4np27WCg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript">
+  </script>
+
+  <script src="./js/4unique-admin.js"></script>
+
+</body>
+
+</html>

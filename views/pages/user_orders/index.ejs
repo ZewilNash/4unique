@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tac+One&display=swap" rel="stylesheet"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+
+
+    <link rel="stylesheet" href="./css/user_orders.css">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tac+One&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="icon" href="./images/4unique.png" type="image/x-icon" />
+    <title>4UNIQUE - YOUR ORDERS STATUS</title>
+</head>
+
+<body>
+
+    <%- include("loader.ejs") %>
+
+    <div class="home hide">
+        <a href="/home"><img
+                style="width: 50px;height: 50px;object-fit: contain;position: absolute;top: 0;right: 0;margin:30px ;"
+                src="./images/food4unique.png" alt="">
+        </a>
+
+
+        <header class="offcanvas-menu">
+            <input type="checkbox" id="toogle-menu" />
+
+            <label for="toogle-menu" class="toogle-open"><span></span></label>
+
+            <%- include("nav.ejs") %>
+        </header>
+
+
+
+        <main>
+
+           
+            <div style="display: flex;justify-content: center;align-items: center;width: 100vw;height: auto;flex-direction: column;" class="container">
+                <div class="row gap-5">
+                    <!-- <a style="text-align: center;font-size: 18px;color: red;" id="clear_history" href="#">Clear Orders History</a> -->
+                    <% for(var i = 0; i < userOrders.length; i++) { %>
+
+                        <div
+                        
+                        style="display: flex;justify-content: center;align-items: center;flex-direction: column;width: 100%;gap:20px;margin-top: 20px;"
+                        class="col-md-6 mt-5">
+
+                        <h1 style="text-align: center;"><span data-lang="order_1">ORDER ID:</span> <%=  userOrders[i]._id %></h1>
+
+                        <p 
+                        data-date="<%=  userOrders[i].createdAt %>"
+                        style="text-align: center;font-size: 20px;">
+                            <span data-lang="order_2">ORDER MADE AT :</span> <%=  userOrders[i].createdAt %>
+                        </p>
+
+                        
+
+                        <!-- 
+["pending" , "delivered" , "canceled" , "onway"],
+
+                         -->
+                         <% if(userOrders[i].status === "booked") { %>
+                          <div style="display:flex;justify-content: center;align-items: center;flex-direction: column;gap: 10px;text-align: center;box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;padding: 20px;">
+                            <img style="width: 200px;height: 200px;object-fit: contain;" src="./images/pending.gif" alt="">
+
+                            <h1>
+                                <span data-lang="order_3">ORDER NUMBER :</span> <%= userOrders[i].order_num %>
+                            </h1>
+
+
+
+                            <small 
+                            data-lang="order_16"
+                            style="font-size: 18px;">ORDER CONTAINS:</small>
+                            <% for(var w = 0; w < userOrders[i].cart.length; w++) { %>
+                            
+                            <small style="font-size: 18px;font-weight: bold;">
+                               <%= userOrders[i].cart[w].food.name %>
+                            </small>
+                                
+                            <% } %>
+
+                            <h1 
+                            style="margin-top: 15px;"
+                            data-lang="order_4">WE BOOKED YOUR FOOD IT WILL BE READY ON TIME</h1>
+
+                            <small style="font-size: 17px;">
+                                <span data-lang="order_5">ORDER DATE:</span> <%= userOrders[i].date %>
+                            </small>
+                            <small style="font-size: 17px;">
+                                <span data-lang="order_6">
+                                    ORDER TIME:
+                                </span> <%= userOrders[i].time %>
+                            </small>
+
+                            <small 
+                            data-lang="order_7"
+                            style="font-size: 17px;">WHEN YOUR FOOD IS READY WE WILL INFORM YOU</small>
+                            <small
+                            data-lang="order_8"
+                            style="font-size: 17px;">
+                                ALWAYS COME HERE & REFRESH THE PAGE TO CHECK YOUR FOOD STATUS
+                            </small
+                            >
+                          </div>
+
+                          <% } %>
+
+                         <% if(userOrders[i].status === "completed") { %>
+                          <div style="display:flex;justify-content: center;align-items: center;flex-direction: column;gap: 10px;text-align: center;box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;padding: 20px;">
+                            <img style="width: 200px;height: 200px;object-fit: contain;" src="./images/delivered.gif" alt="">
+                            <h1 data-lang="order_9">YOUR ORDER IS READY PLEASE COME TO TAKE IT</h1>
+
+                           
+                            <small style="font-size: 17px;"><span data-lang="order_10">
+                                YOUR ORDER NUMBER IS :
+                            </span> <%= userOrders[i].order_num %></small>
+
+                            <small
+                            data-lang="order_15"
+                            style="font-size: 18px;">YOU ORDERED:</small
+                                >
+                            <% for(var w = 0; w < userOrders[i].cart.length; w++) { %>
+                            
+                            <small style="font-size: 18px;font-weight: bold;">
+                               <%= userOrders[i].cart[w].food.name %>
+                            </small>
+                                
+                            <% } %>
+                            
+                          </div>
+
+                          <% } %>
+
+                         <!-- <% if(userOrders[i].status === "onway") { %>
+                          <div style="display:flex;justify-content: center;align-items: center;flex-direction: column;gap: 10px;text-align: center;box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;padding: 20px;">
+                            <img style="width: 200px;height: 200px;object-fit: contain;" src="./images/onway.gif" alt="">
+                            <h1>THE ORDER IS IN THE WAY TO YOU</h1>
+                            <small style="font-size: 17px;">IT WILL NOT TAKE LONG KEEP TUNE!</small>
+                          </div>
+
+                          <% } %>
+
+                         <% if(userOrders[i].status === "canceled") { %>
+                          <div style="display:flex;justify-content: center;align-items: center;flex-direction: column;gap: 10px;text-align: center;box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;padding: 20px;">
+                            <img style="width: 200px;height: 200px;object-fit: contain;" src="./images/canceled.png" alt="">
+                            <h1>THIS ORDER HAS BEEN CANCELlED</h1>
+
+                            <p style="font-size: 20px;">IF YOU HAVE ANY COMPLAIN PLEASE CONTACT US <a style="font-size: 17px;font-weight: bold;color: #000;" href="/contactus">HERE</a></p>
+
+                            <small style="font-size: 17px;">Not: NOTE YOUR ORDER ID</small>
+                            
+                          </div>
+
+                          <% } %> -->
+
+                          
+                        
+
+                        </div
+                        >
+                    
+                    <% } %>
+                </div>
+            </div>
+
+
+        </main>
+
+    </div>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.8/axios.min.js"
+        integrity="sha512-PJa3oQSLWRB7wHZ7GQ/g+qyv6r4mbuhmiDb8BjSFZ8NZ2a42oTtAq5n0ucWAwcQDlikAtkub+tPVCw4np27WCg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./js/user_orders.js"></script>
+</body>
+
+</html>

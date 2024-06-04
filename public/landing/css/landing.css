@@ -1,58 +1,71 @@
-.loading{
+body {
+
+    font-family: "Roboto", sans-serif !important;
+    font-weight: 400;
+    font-style: normal;
+      
     display: flex;
-    height: 100vh;
-    width: 100vw;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.loading .logo {
-    width: 300px;
-    height: 300px;
-    object-fit: contain;
-}
-
-.loading .gif {
-    width: 200px;
-    height: 200px;
-    object-fit: contain;
-}
-
-.main{
-    display: flex;
     height: 100vh;
-    width: 100vw;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 20px;
-    background-image: url(../images/fashion.jpg);
+    width: 100vw; 
+    background-image: url("../images/bg.jpg");
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
-    color: #FF0000;
-    font-weight: bold;
+   
 }
 
-.main img {
+.loader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.loader img {
+    width: 250px;
+    height: 250px;
+    object-fit: contain;
+}
+
+
+
+.main .main-image{
     width: 300px;
     height: 300px;
     object-fit: contain;
 }
 
-.landing-btn{
-    outline: none;
-    border: none;
-    padding: 10px;
-    background-color: #FF0000;
-    color: #fff;
-    border-radius: 4px;
-    text-decoration: none;
+.col-md-6{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 50px;
 }
 
-.landing-btn:hover {
+.col-md-6 h1{
+    font-size: 50px;
+}
+
+.col-md-6 p {
+    font-size: 30px;
+}
+
+.signup-btn{
+    text-decoration: none;
+    color: #fff;
+    background-color: #FF0000;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.signup-btn:hover{
+    text-decoration: none;
     color: #fff;
 }
 

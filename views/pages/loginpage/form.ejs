@@ -1,0 +1,59 @@
+<div class="form container hide" style="height: 100vh;overflow-y: scroll;">
+    <div class="row" style="height: 100%;overflow-y: scroll;">
+        
+        <div class="col-md-12" style="display: flex;justify-content: center;align-items: center;height: auto;flex-direction: column;">
+            <img style="width: 100px;height: 100px;object-fit: contain;margin-bottom:20px" src="./images/4unique.png" alt="">
+            <h1 data-lang="up_1" style="font-size: 40px;text-align: center;color: #FF0000;">YOU ARE ALMOST THERE</h1>
+            <p data-lang="up_2" style="font-size:30px;text-align: center;color: #FF0000;">LOGIN TO YOUR ACCOUNT</p>
+            <small data-lang="up_3"  style="font-size: 20px;text-align: center;color: #FF0000;">WE'RE WAITING FOR YOUR ORDER</small>
+
+            <div style="height: 100%" class="">
+                <form style="display: flex;height: 130%;">
+                   
+                    <label style="color: #FF0000;" data-lang="up_5" for="">
+                        email
+                    </label>
+    
+                    <input 
+                    id="email"
+                    type="text">
+                    
+                    <label style="color: #FF0000;" data-lang="up_6" for="">
+                        password
+                    </label>
+                    <input 
+                    id="password"
+                    type="password">
+
+                    <i  id="showPass" style="cursor: pointer;color: #FF0000;" class="fa-solid fa-eye"></i>
+
+                    <i style="cursor: pointer;color: #FF0000;" id="hidePass" class="fa-solid fa-eye-slash hide"></i>
+
+                    
+                    <button data-lang="up_7" id="login-btn">Login</button>
+
+
+
+                    <small><span style="color: #FF0000;" data-lang="up_8">
+                        Don't Have an account ?
+                    </span> <a data-lang="up_9" href="/signuppage">Sign Up</a></small>
+
+                    <small style="text-align: center;"><span data-lang="up_10" style="color: #FF0000;">
+                        FORGOT PASSWORD?
+                    </span> <a data-lang="up_11" href="/forgotPass">CLICK HERE</a></small>
+
+                    
+                </form>
+            </div>
+
+        </div>
+        
+        
+      
+
+
+    </div>
+
+    <div style="position: absolute;top: 0;left: 50%;transform: translateX(-50%)" id="errors"></div>
+    <div id="success" style="position: absolute;top: 0;left: 50%;transform: translateX(-50%);"></div>
+</div>

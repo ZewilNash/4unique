@@ -1,0 +1,45 @@
+<nav>
+    <div>
+        <a href="/home">
+            <img style="width: 70px;height: 70px;object-fit: contain;" src="./images/4unique.png" alt="">
+        </a>
+        <a id="my_cart_link"  href="#"><i class="fa-solid fa-cart-shopping">
+            <b id="cart_length"></b>
+        </i></a>
+        
+        <label for="toogle-menu" class="toogle-close">
+            <span></span>
+        </label>
+    </div>
+    <ul>
+
+       
+
+        <li><a data-lang="discover" href="/food">ALL FOOD</a></li>
+        <li><a data-lang="egyptian" href="/food/egyptian%20food">EGYPTIAN</a></li>
+        <li><a data-lang="indonesian" href="/food/indonesian%20food">INDONESIAN</a></li>
+        <li><a data-lang="egyindo"  href="/food/egyindo%20food">EGYINDO</a></li>
+        
+        <li><a data-lang="vip" href="/food/vip%20food">VIP</a></li>
+        <li><a data-lang="desserts" href="/food/desserts">DESSERTS</a></li>
+
+        <% for(var i = 0; i < categories.length; i++) { %>
+            <li><a href="/food/<%= categories[i].category %>"><%= categories[i].category.toUpperCase() %></a></li>
+        <% } %>
+
+        <li><a data-lang="about" href="/aboutus">ABOUT </a></li>
+
+        <li><a data-lang="contact" href="/contactus">CONTACT US </a></li>
+
+        <li class="track hide"><a  id="track_orders" data-lang="track" href=""></a></li>
+
+        <li id="logout"><a  ><i class="fa-solid fa-right-from-bracket"></i> </a></li>
+
+        <li><a data-lang="favourites" id="fav_nav"  href="/favourites">MY FAVOURITES </a></li>
+
+        <li id="login"><a href="/login">LOGIN </a></li>
+
+        <li id="signup"><a href="/signup">SIGNUP</a></li>
+
+    </ul>
+</nav>

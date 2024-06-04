@@ -1,14 +1,16 @@
 window.onload = () => {
-    let user = JSON.parse(localStorage.getItem("4unique-user"));
 
-    if(user){
+    let user = JSON.parse(localStorage.getItem("user"));
+
+    if (user) {
         window.location.href = "/home";
     }
 
-    if(user && user.user.role === "admin"){
+    if (user && user.user.role === "admin") {
         window.location.href = "/4unique-admin"
     }
-   
+
+
     document.querySelector(".form").style.display = "none";
 
     setTimeout(() => {
@@ -62,7 +64,7 @@ document.querySelector("#resetPass-link").addEventListener("click" , (e) => {
 
         document.querySelector("#resetPass-link").disabled = true;
 
-        let HTML = `<p class="success-message">${localStorage.getItem("4unique-lang") === "in" ? "KAMI TELAH MEMPERBARUI PASSWORD ANDA DENGAN SUKSES, KAMI AKAN MENGALIHKAN ANDA KE HALAMAN LOGIN" : msg}</p>`;
+        let HTML = `<p class="success-message">${localStorage.getItem("lang") === "in" ? "KAMI TELAH MEMPERBARUI PASSWORD ANDA DENGAN SUKSES, KAMI AKAN MENGALIHKAN ANDA KE HALAMAN LOGIN" : msg}</p>`;
 
         document.querySelector("#success").innerHTML += HTML;
 
@@ -86,23 +88,23 @@ document.querySelector("#resetPass-link").addEventListener("click" , (e) => {
         errors.forEach(err => {
 
             if (err.includes("THIS EMAIL IS NOT EXIST")) {
-                let HTML = `<p class="error-message">${localStorage.getItem("4unique-lang") === "in" ? `EMAIL INI TIDAK ADA, MASUKKAN EMAIL YANG ADA
+                let HTML = `<p class="error-message">${localStorage.getItem("lang") === "in" ? `EMAIL INI TIDAK ADA, MASUKKAN EMAIL YANG ADA
                 ` : err}</p>`;
 
                 document.querySelector("#errors").innerHTML += HTML;
             }else if(err.includes("INVALID CODE!!")){
-                let HTML = `<p class="error-message">${localStorage.getItem("4unique-lang") === "in" ? `KODE SALAH!!
+                let HTML = `<p class="error-message">${localStorage.getItem("lang") === "in" ? `KODE SALAH!!
                 ` : err}</p>`;
 
                 document.querySelector("#errors").innerHTML += HTML;
             }else if(err.includes("PASSWORD LENGTH SHOULD BE AT LEAST 8")){
-                let HTML = `<p class="error-message">${localStorage.getItem("4unique-lang") === "in" ? `PANJANG SANDI HARUS MINIMAL 8 KARAKTER
+                let HTML = `<p class="error-message">${localStorage.getItem("lang") === "in" ? `PANJANG SANDI HARUS MINIMAL 8 KARAKTER
                 ` : err}</p>`;
 
                 document.querySelector("#errors").innerHTML += HTML;
             }
             else if(err.includes("PASSWORD & CONFIRM PASSWORD")){
-                let HTML = `<p class="error-message">${localStorage.getItem("4unique-lang") === "in" ? `PASSWORD & KONFIRMASI PASSWORD HARUS SESUAI
+                let HTML = `<p class="error-message">${localStorage.getItem("lang") === "in" ? `PASSWORD & KONFIRMASI PASSWORD HARUS SESUAI
                 ` : err}</p>`;
 
                 document.querySelector("#errors").innerHTML += HTML;
@@ -133,7 +135,7 @@ document.querySelector("#forgotPass-link").addEventListener("click", (e) => {
 
         document.querySelector("#forgotPass-link").disabled = true;
 
-        let HTML = `<p class="success-message">${localStorage.getItem("4unique-lang") === "in" ? "KAMI TELAH MENGIRIMKAN KODE KE EMAIL ANDA" : msg}</p>`;
+        let HTML = `<p class="success-message">${localStorage.getItem("lang") === "in" ? "KAMI TELAH MENGIRIMKAN KODE KE EMAIL ANDA" : msg}</p>`;
 
         document.querySelector("#success").innerHTML += HTML;
 
@@ -165,7 +167,7 @@ document.querySelector("#forgotPass-link").addEventListener("click", (e) => {
         errors.forEach(err => {
 
             if (err.includes("THIS EMAIL IS NOT EXIST")) {
-                let HTML = `<p class="error-message">${localStorage.getItem("4unique-lang") === "in" ? `EMAIL INI TIDAK ADA, MASUKKAN EMAIL YANG ADA
+                let HTML = `<p class="error-message">${localStorage.getItem("lang") === "in" ? `EMAIL INI TIDAK ADA, MASUKKAN EMAIL YANG ADA
                 ` : err}</p>`;
 
                 document.querySelector("#errors").innerHTML += HTML;
@@ -199,7 +201,7 @@ const translations = {
         discover: "DISCOVER ALL",
         categories: "CATEGORIES",
         egyptian: "EGYPTIAN",
-        indonesian: "INSONESIAN",
+        indonesian: "INDONESIAN",
         egyindo: "EGYINDO",
         vip: "VIP",
         desserts: "DESSERTS",
@@ -268,5 +270,5 @@ const setLanguage = (language) => {
     })
 }
 
-const langParams = localStorage.getItem("4unique-lang") || "en"
+const langParams = localStorage.getItem("lang") || "en"
 setLanguage(langParams)

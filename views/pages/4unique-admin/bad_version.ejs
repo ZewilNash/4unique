@@ -1,0 +1,583 @@
+<div id="all_canceled_orders" class="hide">
+    <div class="container">
+        <div class="row">
+          <a id="delete_all_canceled" style="color: red;font-size: 30px;margin-top: 20px;margin-bottom: 20px;" href="#">DELETE ALL</a>
+          
+          <% for(var i = 0; i < canceledOrders.length; i++) { %>
+            <div id="order_container" style="width: 100vw;height: auto;display: flex;justify-content: center;align-items: center;flex-direction: column;box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;" class="col-md-12 mt-4">
+              <p style="text-align: center;">ORDER ID: <%=  canceledOrders[i]._id %></p>
+    
+              <p style="text-align: center;">Made By : <%=  canceledOrders[i].name %></p>
+              <p style="text-align: center;">Order Owner Email : <%=  canceledOrders[i].email %></p>
+              <p style="text-align: center;">Order Owner phone : <%=  canceledOrders[i].phone %></p>
+              <p style="text-align: center;">Order Owner address : <%=  canceledOrders[i].address %></p>
+    
+              <div style="font-size: 22px;" class="d-flex gap-3 mt-3">
+                <span style="font-size:15px;text-align: center;">owner state: <%=  canceledOrders[i].state %></span >
+                <span style="font-size:15px;text-align: center;">owner country: <%=  canceledOrders[i].country %></span>
+                <span style="font-size:15px;text-align: center;">owner village: <%=  canceledOrders[i].village %></span>
+                <span style="font-size:15px;text-align: center;">owner leisure: <%=  canceledOrders[i].leisure %></span>
+              </div>
+    
+              <div style="font-size: 18px;" class="d-flex gap-3 mt-3">
+                <span>order Owner Zip Code: <%=  canceledOrders[i].zip_code %></span>
+                <span>order status: <%=  canceledOrders[i].status %></span>
+                <span>order isPaid: <%=  canceledOrders[i].isPaid %></span>
+                
+              </div>
+    
+              <p style="text-align: center;">Order Date & Time : <%=  canceledOrders[i].createdAt %></p>
+    
+              <div style="font-size: 20px;" class="d-flex gap-3 mt-3">
+                <a data-order-id="<%= canceledOrders[i]._id %>" id="canceledOrder_show_more" href="#" style="color:green">Show More</a>
+                <a data-order-id="<%= canceledOrders[i]._id %>"  href="#" id="canceledOrder_delete" style="color:red;">Delete Order</a>
+                
+                
+              </div>
+    
+    
+    
+            </div>
+          <% } %>
+        </div>
+    </div>
+    <a style="font-size: 30px;margin-top: 20px;color: #000;" id="back_from_canceled" href="#">Go Back</a>
+  </div>
+  <div id="all_delivered_orders" class="hide">
+    <div class="container">
+        <div class="row">
+          <a id="delete_all_delivered" style="color: red;font-size: 30px;margin-top: 20px;margin-bottom: 20px;" href="#">DELETE ALL</a>
+          <% for(var i = 0; i < deliveredOrders.length; i++) { %>
+            <div id="order_container" style="width: 100vw;height: auto;display: flex;justify-content: center;align-items: center;flex-direction: column;box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;" class="col-md-12 mt-4">
+              <p style="text-align: center;">ORDER ID: <%=  deliveredOrders[i]._id %></p>
+    
+              <p style="text-align: center;">Made By : <%=  deliveredOrders[i].name %></p>
+              <p style="text-align: center;">Order Owner Email : <%=  deliveredOrders[i].email %></p>
+              <p style="text-align: center;">Order Owner phone : <%=  deliveredOrders[i].phone %></p>
+              <p style="text-align: center;">Order Owner address : <%=  deliveredOrders[i].address %></p>
+    
+              <div style="font-size: 22px;" class="d-flex gap-3 mt-3">
+                <span style="font-size:15px;text-align: center;">owner state: <%=  deliveredOrders[i].state %></span >
+                <span style="font-size:15px;text-align: center;">owner country: <%=  deliveredOrders[i].country %></span>
+                <span style="font-size:15px;text-align: center;">owner village: <%=  deliveredOrders[i].village %></span>
+                <span style="font-size:15px;text-align: center;">owner leisure: <%=  deliveredOrders[i].leisure %></span>
+              </div>
+    
+              <div style="font-size: 18px;" class="d-flex gap-3 mt-3">
+                <span>order Owner Zip Code: <%=  deliveredOrders[i].zip_code %></span>
+                <span>order status: <%=  deliveredOrders[i].status %></span>
+                <span>order isPaid: <%=  deliveredOrders[i].isPaid %></span>
+                
+              </div>
+    
+              <p style="text-align: center;">Order Date & Time : <%=  deliveredOrders[i].createdAt %></p>
+    
+              <div style="font-size: 20px;" class="d-flex gap-3 mt-3">
+                <a data-order-id="<%= deliveredOrders[i]._id %>" id="deliveredOrder_show_more" href="#" style="color:green">Show More</a>
+                <a data-order-id="<%= deliveredOrders[i]._id %>"  href="#" id="deliveredOrder_delete" style="color:red;">Delete Order</a>
+                
+                
+              </div>
+    
+    
+    
+            </div>
+          <% } %>
+        </div>
+    </div>
+    <a style="font-size: 30px;margin-top: 20px;color: #000;" id="back_from_delivered" href="#">Go Back</a>
+  </div>
+
+
+
+
+
+  <div id="all_pending_orders" class="hide">
+    <div class="container">
+        <div class="row">
+          
+          <% for(var i = 0; i < pendingOrders.length; i++) { %>
+            <div id="order_container" style="width: 100vw;height: auto;display: flex;justify-content: center;align-items: center;flex-direction: column;box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;" class="col-md-12 mt-4">
+              <p style="text-align: center;">ORDER ID: <%=  pendingOrders[i]._id %></p>
+    
+              <p style="text-align: center;">Made By : <%=  pendingOrders[i].name %></p>
+              <p style="text-align: center;">Order Owner Email : <%=  pendingOrders[i].email %></p>
+              <p style="text-align: center;">Order Owner phone : <%=  pendingOrders[i].phone %></p>
+              <p style="text-align: center;">Order Owner address : <%=  pendingOrders[i].address %></p>
+    
+              <div style="font-size: 22px;" class="d-flex gap-3 mt-3">
+                <span style="font-size:15px;text-align: center;">owner state: <%=  pendingOrders[i].state %></span >
+                <span style="font-size:15px;text-align: center;">owner country: <%=  pendingOrders[i].country %></span>
+                <span style="font-size:15px;text-align: center;">owner village: <%=  pendingOrders[i].village %></span>
+                <span style="font-size:15px;text-align: center;">owner leisure: <%=  pendingOrders[i].leisure %></span>
+              </div>
+    
+              <div style="font-size: 18px;" class="d-flex gap-3 mt-3">
+                <span>order Owner Zip Code: <%=  pendingOrders[i].zip_code %></span>
+                <span>order status: <%=  pendingOrders[i].status %></span>
+                <span>order isPaid: <%=  pendingOrders[i].isPaid %></span>
+                
+              </div>
+    
+              <p style="text-align: center;">Order Date & Time : <%=  pendingOrders[i].createdAt %></p>
+    
+              <div style="font-size: 20px;" class="d-flex gap-3 mt-3">
+                <a data-order-id="<%= pendingOrders[i]._id %>" id="pendingOrder_show_more" href="#" style="color:green">Show More</a>
+                <a data-order-id="<%= pendingOrders[i]._id %>"  href="#" id="pendingOrder_delete" style="color:red;">Delete Order</a>
+                
+                
+              </div>
+    
+    
+    
+            </div>
+          <% } %>
+        </div>
+    </div>
+    <a style="font-size: 30px;margin-top: 20px;color: #000;" id="back_from_pending" href="#">Go Back</a>
+  </div>
+
+
+
+
+
+
+  <div id="edit_user_form" class="hide">
+    <div class="container" style="display: flex;justify-content: center;align-items: center;margin-top: 20px;flex-direction: column;width: 100vw;height: 100vh;" >
+      <div class="row">
+        <div id="edit_user_container" style="display: flex;justify-content: center;align-items: center;margin-top: 20px;flex-direction: column;" class="col-md-12">
+           
+        </div>
+      </div>
+    </div>
+
+    <a style="font-size: 30px;margin-top: 20px;color: #000;" id="back_from__edit_users" href="#">Go Back</a>
+  </div>
+
+
+  <div id="all_users" class="hide">
+    <div class="container">
+        <div class="row">
+          <% for(var i = 0; i < users.length; i++) { %>
+          <div style="display: flex;justify-content: center;align-items: center;margin-top: 20px;flex-direction: column;box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;" class="col-md-6">
+              <h1><%= users[i].fullname %></h1>
+              <h1><%= users[i].email %></h1>
+              <h1><%= users[i].role %></h1>
+              <div style="display: flex;width: 100%;justify-content: space-between;" class="">
+                <a data-user-id="<%= users[i]._id %>" style="color: blue;font-size: 20px;" id="edit_user" href="#">Edit</a>
+                <a data-user-id="<%= users[i]._id %>" style="color: red;font-size: 20px;" id="delete_user" href="#">Delete</a>
+              </div>
+              
+          </div>
+          <% } %>
+        </div>
+    </div>
+    <a style="font-size: 30px;margin-top: 20px;color: #000;" id="back_from_users" href="#">Go Back</a>
+  </div>
+
+  <div id="admin-dashboard" class="hide">
+    <div style="display: flex;flex-direction: column;" class="">
+    <div class="container">
+        <div class="row">
+          <div style="display: flex;justify-content: center;align-items: center;text-align: center;flex-direction: column;box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;" class="col-md-4 mt-5">
+              <h1>ORDERS</h1>
+              <h1><%= bookedordersLength %></h1>
+          </div>
+          <div style="display: flex;justify-content: center;align-items: center;text-align: center;flex-direction: column;box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;" class="col-md-4 mt-5">
+            <h1>PRODUCTS</h1>
+            <h1><%= productsLength %></h1>
+        </div>
+        <div style="display: flex;justify-content: center;align-items: center;text-align: center;flex-direction: column;box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;" class="col-md-4 mt-5">
+          <h1>REPORTS</h1>
+          <h1><%= reportsLength %></h1>
+      </div>
+
+        <div style="display: flex;justify-content: center;align-items: center;text-align: center;flex-direction: column;box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;" class="col-md-4 mt-5">
+          <h1>USERS</h1>
+          <h1><%= usersLength %></h1>
+      </div>
+          
+          
+        </div>
+      </div>
+
+      <a id="show_all_users" style="color: #000;font-size: 20px;text-align: center;margin-top: 10px;" href="#">Show All Users</a>
+
+    
+      
+      <button disabled id="show_pending_orders" style="color: #000;font-size: 20px;text-align: center;margin-top: 10px;" href="#">Show All Orders With Pending Status</button>
+
+      <button disabled id="show_delivered_orders" style="color: #000;font-size: 20px;text-align: center;margin-top: 10px;" href="#">Show All Orders With Delivered Status</button>
+
+      <button disabled id="show_canceled_orders" style="color: #000;font-size: 20px;text-align: center;margin-top: 10px;" href="#">Show All Orders With Canceled Status</button>
+
+     
+
+      <button disabled style="color: #000;font-size: 20px;text-align: center;margin-top: 10px;" href="#">Show & Add User To Black List</button>
+     
+
+      <a id="back_from_dashboard" style="color: #000;font-size: 20px;text-align: center;margin-top: 10px;" href="#">Go Back</a>
+
+
+      
+</div>
+  </div>
+
+  <div id="reports" class="container hide">
+    <div class="row">
+
+      <input style="padding: 10px;" class="mt-5" id="report_text_Search" type="text" placeholder="SEARCH REPORT BY ORDER ID">
+
+      <div id="report_container_search" class="hide">
+        
+      </div>
+
+      <div id="con_report">
+        <% for(var i = 0; i < reports.length; i++) { %>
+          
+  
+          <div id="report_container" style="width: 100vw;height: auto;display: flex;justify-content: center;align-items: center;flex-direction: column;box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;" class="col-md-12 mt-4">
+            <p style="text-align: center;">ORDER ID: <%=  reports[i].order %></p>
+  
+            <p style="text-align: center;">Report Content : <%=  reports[i].report %></p>
+
+            <p style="text-align: center;">Report Date & Time : <%=  reports[i].createdAt %></p>
+            
+  
+            <div style="font-size: 20px;" class="d-flex gap-3 mt-3">
+              
+              <a data-order-id="<%= reports[i]._id %>"  href="#" id="delete_report" style="color:red;">Delete Report</a>
+              
+              
+            </div>
+  
+  
+  
+          </div>
+        
+        <% } %>
+        <a style="text-align: center;font-size: 20px;color: #000;margin-top: 10px;" href="#" id="back_reports">Go Back</a>
+        </div>
+
+    </div>
+  </div>
+
+  <div style="display: flex;justify-content: center;align-items: center;width: 100vw;height: 100vh;flex-direction: column;display: none;" class="hide container" id="edit_booked_order">
+    <form style="display: flex;flex-direction: column;justify-content:center;align-items: center;width: 100%;height: 100%;padding: 20px;gap:10px">
+      <h1 style="text-align: center;">Edit Order With Id: <span id="span_booked_order_id" style="font-size: 20px;"></span></h1>
+      <label for="">Change Order Status</label>
+        <select id="order_status">
+          <option selected value="booked">booked</option>
+          <option value="completed">completed</option>
+          
+          
+        </select>
+
+        <label for="">Change Order is Payed Status</label>
+        <select id="order_paid">
+          <option selected value="true">true</option>
+          <option value="false">false</option>
+         
+        </select>
+
+        
+
+        <button id="edit_booked_order_submit" type="submit">Submit</button>
+
+        <a style="text-align: center;font-size: 20px;color: #000;margin-top: 10px;" href="#" id="back_booked_orders">Go Back</a>
+
+    </form>
+</div>
+
+<div id="booked_order_item" class="hide container">
+    <div class="row">
+        <h1 style="text-align: center;">More Details About The Order Items</h1>
+        <h1 id="total" style="text-align: center;">TOTAL ORDER PRICE : <span id="total_booked_order_price" style="font-size: 30px;font-weight: bold;"></span></h1>
+        <!-- <a style="text-align: center;font-size: 20px;color: #000;margin-top: 10px;" href="#" id="back_booked_orders">Go Back</a> -->
+        <!-- <a style="font-size: 20px;color: #000;text-align: center;margin-top: 10px;" href="#" id="go_back_booked_orders">Go Back</a> -->
+    </div>
+</div>
+
+<div id="order_item" class="hide container">
+    <div class="row">
+      <h1 style="text-align: center;">More Details About The Order Items</h1>
+      <h1 id="total" style="text-align: center;">TOTAL ORDER PRICE : <span id="total_order_price" style="font-size: 30px;font-weight: bold;"></span></h1>
+     
+      <!-- <a style="text-align: center;font-size: 20px;color: #000;margin-top: 10px;" href="#" id="back_orders_btn">Go Back</a> -->
+        <!-- <a style="font-size: 20px;color: #000;text-align: center;margin-top: 10px;" href="#" id="go_back_orders">Go Back</a> -->
+    </div>
+</div>
+
+<div id="booked_order_page" class="container hide">
+  <div class="row">
+    
+    <input style="padding: 10px;" class="mt-5" id="booked_order_id_text" type="text" placeholder="SEARCH ORDER BY ID">
+
+    <!-- <div style="font-size: 20px;" class="d-flex gap-3 mt-3">
+      <a data-order-id="<%= orders[i]._id %>" id="all_pending" href="#" style="color:green">Get All Pending</a>
+      <a data-order-id="<%= orders[i]._id %>"  href="#" id="all_delivered" style="color:red;">Get All Delivered</a>
+      <a data-order-id="<%= orders[i]._id %>" id="all_canceled" href="#">Get All Canceled</a>
+      
+    </div> -->
+
+    <div id="booked_order_container_search"></div>
+
+    <div id="booked_con">
+    <% for(var i = 0; i < bookedOrders.length; i++) { %>
+      
+
+      <div id="booked_order_container" style="width: 100vw;height: auto;display: flex;justify-content: center;align-items: center;flex-direction: column;box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;" class="col-md-12 mt-4">
+        <p style="text-align: center;">ORDER ID: <%=  bookedOrders[i]._id %></p>
+        <p style="text-align: center;">Order NUMBER : <%=  bookedOrders[i].order_num %></p>
+        <p style="text-align: center;">Order DATE : <%=  bookedOrders[i].date %></p>
+        <p style="text-align: center;">Order TIME : <%=  bookedOrders[i].time %></p>
+        <p style="text-align: center;">Made By : <%=  bookedOrders[i].name %></p>
+        <p style="text-align: center;">Order Owner Email : <%=  bookedOrders[i].email %></p>
+        <p style="text-align: center;">Order Owner phone : <%=  bookedOrders[i].phone %></p>
+
+        <p style="text-align: center;">Order Owner address : <%=  bookedOrders[i].address %></p>
+
+       
+          <span style="font-size:15px;text-align: center;">owner state: <%=  bookedOrders[i].state %></span >
+          <span style="font-size:15px;text-align: center;">owner country: <%=  bookedOrders[i].country %></span>
+          <span style="font-size:15px;text-align: center;">owner village: <%=  bookedOrders[i].village %></span>
+          <span style="font-size:15px;text-align: center;">owner leisure: <%=  bookedOrders[i].leisure %></span>
+
+
+       
+        <div style="font-size: 18px;" class="d-flex gap-3 mt-3">
+          <span>order Owner Zip Code: <%=  bookedOrders[i].zip_code %></span>
+          <span>order status: <%=  bookedOrders[i].status %></span>
+          <span>order isPaid: <%=  bookedOrders[i].isPaid %></span>
+          
+        </div>
+
+        <p style="text-align: center;">Order Date & Time : <%=  bookedOrders[i].createdAt %></p>
+
+        <div style="font-size: 20px;" class="d-flex gap-3 mt-3">
+          <a data-order-id="<%= bookedOrders[i]._id %>" class="booked_order_show" href="#" style="color:green">Show More</a>
+          <a data-order-id="<%= bookedOrders[i]._id %>"  href="#" id="delete_booked_order" style="color:red;">Delete Order</a>
+          
+          <a data-order-id="<%= bookedOrders[i]._id %>" id="edit_booked_order_btn" href="#">Edit Order</a>
+          
+        </div>
+
+
+
+      </div>
+    
+    <% } %>
+    </div>
+
+    <a style="font-size: 20px;color: #000;text-align: center;margin-top: 20px;" href="#" id="back_from_booked_orders">Go Back</a>
+
+  </div>
+</div>
+<div id="order_page" class="container hide">
+  <div class="row">
+    
+    <input style="padding: 10px;" class="mt-5" id="order_id_text" type="text" placeholder="SEARCH ORDER BY ID">
+
+    <!-- <div style="font-size: 20px;" class="d-flex gap-3 mt-3">
+      <a data-order-id="<%= orders[i]._id %>" id="all_pending" href="#" style="color:green">Get All Pending</a>
+      <a data-order-id="<%= orders[i]._id %>"  href="#" id="all_delivered" style="color:red;">Get All Delivered</a>
+      <a data-order-id="<%= orders[i]._id %>" id="all_canceled" href="#">Get All Canceled</a>
+      
+    </div> -->
+
+
+
+    <div id="order_container_search"></div>
+
+    <div id="con">
+    <% for(var i = 0; i < orders.length; i++) { %>
+      
+
+      <div id="order_container" style="width: 100vw;height: auto;display: flex;justify-content: center;align-items: center;flex-direction: column;box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;" class="col-md-12 mt-4">
+        <p style="text-align: center;">ORDER ID: <%=  orders[i]._id %></p>
+
+        <p style="text-align: center;">Made By : <%=  orders[i].name %></p>
+        <p style="text-align: center;">Order Owner Email : <%=  orders[i].email %></p>
+        <p style="text-align: center;">Order Owner phone : <%=  orders[i].phone %></p>
+        <p style="text-align: center;">Order Owner address : <%=  orders[i].address %></p>
+
+        <div style="font-size: 22px;" class="d-flex gap-3 mt-3">
+          <span style="font-size:15px;text-align: center;">owner state: <%=  orders[i].state %></span >
+          <span style="font-size:15px;text-align: center;">owner country: <%=  orders[i].country %></span>
+          <span style="font-size:15px;text-align: center;">owner village: <%=  orders[i].village %></span>
+          <span style="font-size:15px;text-align: center;">owner leisure: <%=  orders[i].leisure %></span>
+        </div>
+
+        <div style="font-size: 18px;" class="d-flex gap-3 mt-3">
+          <span>order Owner Zip Code: <%=  orders[i].zip_code %></span>
+          <span>order status: <%=  orders[i].status %></span>
+          <span>order isPaid: <%=  orders[i].isPaid %></span>
+          
+        </div>
+
+        <p style="text-align: center;">Order Date & Time : <%=  orders[i].createdAt %></p>
+
+        <div style="font-size: 20px;" class="d-flex gap-3 mt-3">
+          <a data-order-id="<%= orders[i]._id %>" id="order_show_more" href="#" style="color:green">Show More</a>
+          <a data-order-id="<%= orders[i]._id %>"  href="#" id="delete_order" style="color:red;">Delete Order</a>
+          <a data-order-id="<%= orders[i]._id %>" id="edit_order_btn" href="#">Edit Order</a>
+          
+        </div>
+
+
+
+      </div>
+    
+    <% } %>
+    </div>
+
+    <a style="font-size: 20px;color: #000;text-align: center;margin-top: 20px;" href="#" id="back_from_orders">Go Back</a>
+
+  </div>
+</div>
+ <div class="hide">
+  <form action="#">
+        <input type="text" hidden id="id_edit">
+        <label for="name">NAME <em>&#x2a;</em></label>
+  
+        <input id="name_edit" name="name" required="" type="text" />
+  
+        <label for="price">PRICE <em>&#x2a;</em></label>
+  
+        <input id="price_edit" name="price" required="" type="number" />
+  
+        <label for="category">CATEGORY <em>&#x2a;</em></label>
+  
+        <input id="category_edit" name="category" required="" type="text" />
+  
+        <label for="available_size">Available Sizes <em>&#x2a;</em></label>
+  
+        <input id="available_size_edit" name="available_size" required="" type="text" />
+  
+        <label for="customerNote">DESCRIPTION <em>&#x2a;</em></label>
+  
+        <textarea id="description_edit" name="description" required="" rows="4"></textarea>
+  
+  
+        <label for="image">IMAGE</label>
+  
+        <input id="images_edit" name="image" type="file" multiple class="input-field upload_widget_edit" accept="image/*" />
+  
+  
+        <button id="create-btn_edit">EDIT</button>
+  
+  
+      </form>
+     
+  </div>
+
+<div class="not-edit" style="width: 100vw;display: flex;flex-direction: column;gap: 20px;height: auto;">
+  <!-- contact us -->
+ 
+  <div class="container hide foods">
+    <div class="row">
+     <% for(var i = 0; i < products.length; i++) { %>
+       <div class="col-md-4 food-item">
+       <a href="/fooddetail/<%= products[i]._id %>" class="mt-5 food-item">
+           <img src="<%= products[i].images[0] %>" />
+           <p><%= products[i].name %></p>
+           <span><%= products[i].price %></span>
+           
+           
+       </a>
+       <div 
+       style="display: flex;justify-content: space-between;width: 100%;font-size: 25px;cursor: pointer;"
+       class="footer">
+ 
+       <!--<i class="fa-solid fa-trash"></i> -->
+           <i
+           data-food-id="<%= products[i]._id %>"
+           id="update_link"
+           class="fa-solid fa-pen-to-square"></i
+ 
+               >
+ 
+           <i id="delete_food" data-food-id="<%= products[i]._id %>" class="fa-solid fa-trash"></i>
+ 
+           </div>
+ 
+       </div>
+     <% } %>
+    </div>
+    
+  </div>
+
+  <a style="text-align: center;font-weight: bold;color: #000;font-size: 30px;" href="#" id="show_booked_orders_with_completed">Show All BOOKED ORDERS WITH  COMPLETED STATUS</a>
+
+  <a style="text-align: center;font-weight: bold;color: #000;font-size: 30px;" href="#" id="show_text">Show All Food</a>
+  
+<button disabled style="text-align: center;font-weight: bold;color: #000;font-size: 30px;" href="#" id="show_orders">Show All Orders</button> 
+
+ <button disabled style="text-align: center;font-weight: bold;color: #000;font-size: 30px;" href="#" id="show_reports">Show All Reports</button> 
+
+  <a style="text-align: center;font-weight: bold;color: #000;font-size: 30px;" href="#" id="show_booked_orders">Show All BOOKED Orders</a>
+
+  <a id="admin-dashboard-link" style="text-align: center;color: #000;font-size: 20px;" href="#">Show Admin Dashboard</a>
+
+</div>
+
+<div class="edit hide">
+  <div class="success"></div>
+  <div class="errors"></div>
+<form action="#">
+      <input type="text" hidden id="id_edit">
+      <label for="name">NAME <em>&#x2a;</em></label>
+
+      <input id="name_edit" name="name" required="" type="text" />
+
+      <label for="price">PRICE <em>&#x2a;</em></label>
+
+      <input id="price_edit" name="price" required="" type="number" />
+
+      <label for="category">CATEGORY <em>&#x2a;</em></label>
+
+      <input id="category_edit" name="category" required="" type="text" />
+
+      <label for="available_size">Available Sizes <em>&#x2a;</em></label>
+
+      <input id="available_size_edit" name="available_size" required="" type="text" />
+
+      <label for="customerNote">DESCRIPTION <em>&#x2a;</em></label>
+
+      <textarea id="description_edit" name="description" required="" rows="4"></textarea>
+
+
+      <label for="image">IMAGE</label>
+
+      <input id="images_edit" name="image" type="file" multiple class="input-field upload_widget_edit" accept="image/*" />
+
+
+      <button id="create-btn_edit">EDIT</button>
+
+      <div class="mt-5" id="errors"></div>
+      <div class="mt-5" id="success"></div>
+
+    </form>
+    <a style="text-align: center;font-weight: bold;color: #000;font-size: 30px;" href="#" id="show_text_edit">Show All Food</a>
+</div>
+
+
+
+
+
+
+
+
+<!-- <div class="search-product" style="width: 100vw;">
+  <form style="width: 100%;">
+    <input style="width: 80%;" placeholder="search for product by name to delete or update" type="text">
+    <button>Search</button>
+  </form>
+</div> -->
+
+
+<i style="cursor: pointer;font-size: 35px;" id="logout" style="font-size: 40px;"
+  class="fa-solid fa-right-from-bracket"></i>
+
+
+</div>
