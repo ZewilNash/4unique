@@ -1,6 +1,6 @@
 window.onload = () => {
 
-  let user = JSON.parse(localStorage.getItem("user"));
+  let user = JSON.parse(localStorage.getItem("4unique-user"));
 
 
 
@@ -52,7 +52,7 @@ window.onload = () => {
 
     if (userOrders.length > 0) {
       document.querySelector("#track_orders").setAttribute("href", `/user_orders/${user.user._id}`);
-      document.querySelector("#track_orders").setAttribute("data-lang" , `track`);
+      document.querySelector("#track_orders").setAttribute("data-lang", `track`);
 
       document.querySelector("#track_orders").innerText = "Track Your Orders Status"
       document.querySelector(".track").classList.toggle("hide")
@@ -61,7 +61,7 @@ window.onload = () => {
     const setLanguage = (language) => {
       document.querySelectorAll("[data-lang]").forEach(element => {
         const translationKey = element.getAttribute("data-lang")
-    
+
         if (element.getAttribute('id') === "food_qty") {
           element.placeholder = translations[language][translationKey]
         } else {
@@ -69,8 +69,8 @@ window.onload = () => {
         }
       })
     }
-    
-    const langParams = localStorage.getItem("lang") || "en"
+
+    const langParams = localStorage.getItem("4unique-lang") || "en"
     setLanguage(langParams)
 
   }).catch(err => {
@@ -130,7 +130,7 @@ let alsolike = document.querySelector(".alsolike-container");
 document.querySelector("#logout").addEventListener("click", () => logout());
 
 function logout() {
-  localStorage.removeItem('user');
+  localStorage.removeItem('4unique-user');
   window.location.href = '/loginpage';
 }
 
@@ -151,7 +151,7 @@ document.querySelectorAll("#product-img").forEach(img => {
   })
 })
 
-const user = JSON.parse(localStorage.getItem("user"));
+const user = JSON.parse(localStorage.getItem("4unique-user"));
 
 document.querySelectorAll("#fav_btn").forEach(b => {
   b.addEventListener("click", (e) => {
@@ -179,7 +179,7 @@ document.querySelectorAll("#fav_btn").forEach(b => {
       const myPopup = new Popup({
         id: "my-popup",
         title: "FOOD4UNIQUE",
-        content: `${localStorage.getItem("lang") === "in" ? `ITEM BERHASIL DITAMBAHKAN KE FAVORIT
+        content: `${localStorage.getItem("4unique-lang") === "in" ? `ITEM BERHASIL DITAMBAHKAN KE FAVORIT
         ` : msg_data}`,
         showImmediately: true,
         textColor: "green"
@@ -197,7 +197,7 @@ document.querySelectorAll("#fav_btn").forEach(b => {
       const myPopup = new Popup({
         id: "my-popup",
         title: "FOOD4UNIQUE",
-        content: `${localStorage.getItem("lang") === "in" ? "ITEM SUDAH DITAMBAHKAN KE FAVORIT" : msg}`,
+        content: `${localStorage.getItem("4unique-lang") === "in" ? "ITEM SUDAH DITAMBAHKAN KE FAVORIT" : msg}`,
         showImmediately: true,
         textColor: "red"
       });
@@ -231,7 +231,7 @@ document.querySelectorAll("#add_to_cart_btn").forEach(btn => {
         id: "my-popup",
         title: "FOOD4UNIQUE",
         content: `
-       ${localStorage.getItem("lang") === "in" ? "MINIMAL UNTUK TAMBAHKAN KE KERANJANG ADALAH 1" : "THE MINIMUM TO ADD TO CART IS 1"}`,
+       ${localStorage.getItem("4unique-lang") === "in" ? "MINIMAL UNTUK TAMBAHKAN KE KERANJANG ADALAH 1" : "THE MINIMUM TO ADD TO CART IS 1"}`,
         showImmediately: true,
         textColor: "red"
       });
@@ -251,7 +251,7 @@ document.querySelectorAll("#add_to_cart_btn").forEach(btn => {
         console.log(res);
         const msg_data = res.data.msg;
 
-        document.querySelector(".success").innerText = `${localStorage.getItem("lang") === "in" ? "BARANG BERHASIL DITAMBAHKAN KE KERANJANG" : msg_data}`;
+        document.querySelector(".success").innerText = `${localStorage.getItem("4unique-lang") === "in" ? "BARANG BERHASIL DITAMBAHKAN KE KERANJANG" : msg_data}`;
 
         e.target.style.color = "green";
 
@@ -295,7 +295,7 @@ document.querySelectorAll("#food_qty").forEach(btn => {
       const myPopup = new Popup({
         id: "my-popup",
         title: "FOOD4UNIQUE",
-        content: `${localStorage.getItem("lang") === "in" ? "MINIMAL UNTUK TAMBAHKAN KE KERANJANG ADALAH 1" : "THE MINIMUM TO ADD TO CART IS 1"}`,
+        content: `${localStorage.getItem("4unique-lang") === "in" ? "MINIMAL UNTUK TAMBAHKAN KE KERANJANG ADALAH 1" : "THE MINIMUM TO ADD TO CART IS 1"}`,
         showImmediately: true,
         textColor: "red"
       });
@@ -312,7 +312,7 @@ document.querySelectorAll("#food_qty").forEach(btn => {
         id: "my-popup",
         title: "FOOD4UNIQUE",
         content: `
-       ${localStorage.getItem("lang") === "in" ? "MINIMAL UNTUK TAMBAHKAN KE KERANJANG ADALAH 1" : "THE MINIMUM TO ADD TO CART IS 1"}`,
+       ${localStorage.getItem("4unique-lang") === "in" ? "MINIMAL UNTUK TAMBAHKAN KE KERANJANG ADALAH 1" : "THE MINIMUM TO ADD TO CART IS 1"}`,
         showImmediately: true,
         textColor: "red"
       });
@@ -330,7 +330,7 @@ document.querySelectorAll("#food_qty").forEach(btn => {
 
 const showFoodReviews = () => {
   const food_id = document.URL.split("fooddetail/")[1]
-  let user = JSON.parse(localStorage.getItem("user"));
+  let user = JSON.parse(localStorage.getItem("4unique-user"));
 
   let URL = document.URL.split("fooddetail")[0];
   // logic of add cart to user
@@ -358,7 +358,7 @@ const showFoodReviews = () => {
          
          `
 
-      const langParams = localStorage.getItem("lang") || "en"
+      const langParams = localStorage.getItem("4unique-lang") || "en"
       setLanguage(langParams)
     })
 
@@ -370,17 +370,31 @@ const showFoodReviews = () => {
 
 }
 
+/*
+
+ egyptian: "EGYPTIAN",
+        indonesian: "INSONESIAN",
+        egyindo: "EGYINDO",
+        vip: "VIP",
+        desserts: "DESSERTS",
+ egyptian: "MESIR",
+        indonesian: "INDONESIA",
+        egyindo: "MESIR&INDONESIA",
+        vip: "VIP",
+        desserts: "HIDANGAN PENUTUP",
+*/
+
 // language setup
 const translations = {
   en: {
     search: "Search Food By Name",
     discover: "DISCOVER ALL",
     categories: "CATEGORIES",
-    egyptian: "EGYPTIAN",
-    indonesian: "INDONESIAN",
-    egyindo: "EGYINDO",
-    vip: "VIP",
-    desserts: "DESSERTS",
+    tshirt: "T-SHIRT",
+    purse: "PURSE",
+    jacket: "JACKET",
+    hoodie: "HOODIE",
+    scrunchie: "SCRUNCHIE",
     about: "ABOUT",
     contact: "CONTACT",
     track: "TRACK YOUR ORDERS STATUS",
@@ -394,11 +408,11 @@ const translations = {
     search: "Cari Makanan Berdasarkan Nama",
     discover: "TEMUKAN SEMUA",
     categories: "KATEGORI",
-    egyptian: "MESIR",
-    indonesian: "INDONESIA",
-    egyindo: "MESIR&INDONESIA",
-    vip: "VIP",
-    desserts: "HIDANGAN PENUTUP",
+    tshirt: "KAOS",
+    purse: "TAS KECIL",
+    jacket: "JAKET",
+    hoodie: "TUDUNG",
+    scrunchie: "SCRUNCHIE",
     about: "TENTANG KAMI",
     // HUBUNGI KAMI
     contact: "HUBUNGI KAMI",
@@ -427,5 +441,5 @@ const setLanguage = (language) => {
   })
 }
 
-const langParams = localStorage.getItem("lang") || "en"
+const langParams = localStorage.getItem("4unique-lang") || "en"
 setLanguage(langParams)

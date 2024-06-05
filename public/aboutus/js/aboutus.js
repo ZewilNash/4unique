@@ -1,6 +1,6 @@
 window.onload = () => {
 
-    let user = JSON.parse(localStorage.getItem("user"));
+    let user = JSON.parse(localStorage.getItem("4unique-user"));
 
 
 
@@ -73,7 +73,7 @@ window.onload = () => {
             })
         }
 
-        const langParams = localStorage.getItem("lang") || "en"
+        const langParams = localStorage.getItem("4unique-lang") || "en"
         setLanguage(langParams)
 
     }).catch(err => {
@@ -85,7 +85,7 @@ window.onload = () => {
 document.querySelector("#logout").addEventListener("click", () => logout());
 
 function logout() {
-    localStorage.removeItem('user');
+    localStorage.removeItem('4unique-user');
     window.location.href = '/loginpage';
 }
 
@@ -169,5 +169,5 @@ const setLanguage = (language) => {
     })
 }
 
-const langParams = localStorage.getItem("lang") || "en"
+const langParams = localStorage.getItem("4unique-lang") || "en"
 setLanguage(langParams)

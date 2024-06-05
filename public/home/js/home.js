@@ -1,6 +1,6 @@
 window.onload = () => {
     // get_user_orders
-    let user = JSON.parse(localStorage.getItem("user"));
+    let user = JSON.parse(localStorage.getItem("4unique-user"));
 
 
     if (!user) {
@@ -135,7 +135,7 @@ const categories = [
 ]
 
 
-let user = JSON.parse(localStorage.getItem("user"));
+let user = JSON.parse(localStorage.getItem("4unique-user"));
 let URL = document.URL.split("home")[0];
 
 axios.get(URL + `api/v1/auth/get_category`, {
@@ -187,7 +187,7 @@ axios.get(URL + `api/v1/auth/get_category`, {
 document.querySelector("#logout").addEventListener("click", () => logout());
 
 function logout() {
-    localStorage.removeItem('user');
+    localStorage.removeItem('4unique-user');
     window.location.href = '/loginpage';
 }
 
@@ -222,10 +222,10 @@ socket.on('statusUpdated', async function (data) {
 
     console.log(data);
 
-    let user = JSON.parse(localStorage.getItem("user"));
+    let user = JSON.parse(localStorage.getItem("4unique-user"));
     const notify = new Notification("New message", {
         tag: "FOOD4UNIQUE",
-        body: `${localStorage.getItem("lang") === "in" ? "ANDA SUDAH SELESAI PESANAN, LACAKAN PESANAN ANDA : KLIK LACAKAN STATUS PESANAN ANDA DI MENU WEBSITE" : "YOU HAVE AN ORDER COMPLETED , TRACK YOUR ORDERS :  CLICK TRACK YOUR ORDER STATUS IN THE WEBSITE MENU"}`,
+        body: `${localStorage.getItem("4unique-lang") === "in" ? "ANDA SUDAH SELESAI PESANAN, LACAKAN PESANAN ANDA : KLIK LACAKAN STATUS PESANAN ANDA DI MENU WEBSITE" : "YOU HAVE AN ORDER COMPLETED , TRACK YOUR ORDERS :  CLICK TRACK YOUR ORDER STATUS IN THE WEBSITE MENU"}`,
         icon: "./images/food4unique.png",
         image: "./images/food4unique.png",
         vibrate: 500,
@@ -237,10 +237,10 @@ socket.on('statusUpdated', async function (data) {
 });
 
 socket.on('foodadded', async function (data) {
-    // let user = JSON.parse(localStorage.getItem("user"));
+    // let user = JSON.parse(loca4unique-userrage.getItem("user"));
     const notify = new Notification("New message", {
         tag: "FOOD4UNIQUE",
-        body: `${localStorage.getItem("lang") === "in" ? "KAMI MENAMBAHKAN MAKANAN BARU, SILAHKAN LIHAT DI TEMUKAN SEMUA TAB DI NAVBAR" : "WE ADDED NEW FOOD , PLEASE CHECK IT OUT IN DISCOVER ALL TAB IN THE NAVBAR"}`,
+        body: `${localStorage.getItem("4unique-lang") === "in" ? "KAMI MENAMBAHKAN PRODUK BARU, SILAHKAN LIHAT DI TEMUKAN SEMUA TAB DI NAVBAR" : "WE ADDED NEW PRODUCT , PLEASE CHECK IT OUT IN DISCOVER ALL TAB IN THE NAVBAR"}`,
         icon: "./images/food4unique.png",
         image: "./images/food4unique.png",
         vibrate: 500,
@@ -270,8 +270,8 @@ pusher.subscribe('notifications')
 
         // if we're on the home page, show an "Updated" badge
 
-        var notification = new Notification("NEW FOOD ADDED", {
-            body: data.food.name + "has been added to our food list. Check it out.",
+        var notification = new Notification("NEW PRODUCT ADDED", {
+            body: data.food.name + "has been added to our product list. Check it out.",
             icon: "./images/food4unique.png",
         });
         notification.onclick = function (event) {
@@ -286,7 +286,7 @@ pusher.subscribe('notifications')
         console.log(data.order);
 
         // if we're on the home page, show an "Updated" badge
-        let user = JSON.parse(localStorage.getItem("user"));
+        let user = JSON.parse(l4unique-userStorage.getItem("user"));
         var notification = new Notification("ONE ORDER IS READY", {
             body: "Order Number" + data.order.order_num + "is ready for you to come & take. check also your order list.",
             icon: "./images/food4unique.png",
@@ -340,7 +340,7 @@ const translations = {
 // load the select images
 document.querySelector("#country-select").addEventListener("change", (e) => {
     setLanguage(e.target.value)
-    localStorage.setItem("lang", e.target.value)
+    localStorage.setItem("4unique-lang", e.target.value)
 })
 
 const setLanguage = (language) => {

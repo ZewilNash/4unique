@@ -1,6 +1,6 @@
 window.onload = () => {
 
-  let user = JSON.parse(localStorage.getItem("user"));
+  let user = JSON.parse(localStorage.getItem("4unique-user"));
 
 
 
@@ -71,7 +71,7 @@ window.onload = () => {
       })
     }
 
-    const langParams = localStorage.getItem("lang") || "en"
+    const langParams = localStorage.getItem("4unique-lang") || "en"
     setLanguage(langParams)
 
   }).catch(err => {
@@ -83,7 +83,7 @@ window.onload = () => {
 document.querySelector("#logout").addEventListener("click", () => logout());
 
 function logout() {
-  localStorage.removeItem('user');
+  localStorage.removeItem('4unique-user');
   window.location.href = '/loginpage';
 }
 
@@ -98,9 +98,9 @@ document.querySelector("#fillauto").addEventListener("click", (e) => {
 
   if (name && email) {
     e.target.disabled = true;
-    e.target.innerText = localStorage.getItem("lang") === "in" ? "ANDA SUDAH MENGAJUKAN INFORMASI ANDA" : "YOU ALREADY FILED YOUR INFO"
+    e.target.innerText = localStorage.getItem("4unique-lang") === "in" ? "ANDA SUDAH MENGAJUKAN INFORMASI ANDA" : "YOU ALREADY FILED YOUR INFO"
   }
-  let user = JSON.parse(localStorage.getItem("user"));
+  let user = JSON.parse(localStorage.getItem("4unique-user"));
 
 
   document.querySelector("#fullname").value = user.user.fullname;
@@ -110,7 +110,7 @@ document.querySelector("#fillauto").addEventListener("click", (e) => {
 })
 
 document.querySelector("#sendReport").addEventListener("click", (e) => {
-  let user = JSON.parse(localStorage.getItem("user"));
+  let user = JSON.parse(localStorage.getItem("4unique-user"));
   e.preventDefault();
   let orderId = document.querySelector("#orderId").value;
   let name = document.querySelector("#fullname").value;
@@ -125,7 +125,7 @@ document.querySelector("#sendReport").addEventListener("click", (e) => {
     const myPopup = new Popup({
       id: "my-popup",
       title: "FOOD4UNIQUE",
-      content: `${localStorage.getItem("lang") === "in" ? `SILAHKAN MASUKKAN SEMUA INFORMASI YANG HILANG (NAMA, EMAIL, TELEPON, PESAN, ID PESANAN)
+      content: `${localStorage.getItem("4unique-lang") === "in" ? `SILAHKAN MASUKKAN SEMUA INFORMASI YANG HILANG (NAMA, EMAIL, TELEPON, PESAN, ID PESANAN)
       ` : "PLEASE ENTER PROVIDE ALL MISSING INFO (NAME , EMAIL , PHONE , MESSAGE , ORDERID)"}`,
       showImmediately: true,
       textColor: "red"
@@ -145,7 +145,7 @@ document.querySelector("#sendReport").addEventListener("click", (e) => {
     const myPopup = new Popup({
       id: "my-popup",
       title: "FOOD4UNIQUE",
-      content: `${localStorage.getItem("lang") === "in" ? `HARAP MASUKKAN NOMOR YANG VALID (CONTOH:+62212341234)
+      content: `${localStorage.getItem("4unique-lang") === "in" ? `HARAP MASUKKAN NOMOR YANG VALID (CONTOH:+62212341234)
       ` : "PLEASE ENTER A VALID NUMBER (EX:+62212341234)"}`,
       showImmediately: true,
       textColor: "red"
@@ -172,7 +172,7 @@ document.querySelector("#sendReport").addEventListener("click", (e) => {
     document.querySelector("#sendReport").disabled = true;
     const msg_data = res.data.msg;
 
-    document.querySelector(".success").innerText = `${localStorage.getItem("lang") === "in" ? "LAPORAN ANDA TELAH TERKIRIM DENGAN SUKSES" : msg_data}`;
+    document.querySelector(".success").innerText = `${localStorage.getItem("4unique-lang") === "in" ? "LAPORAN ANDA TELAH TERKIRIM DENGAN SUKSES" : msg_data}`;
 
 
     setTimeout(() => {
@@ -188,7 +188,7 @@ document.querySelector("#sendReport").addEventListener("click", (e) => {
     const msg = err.response.data.msg;
 
     // do something
-    document.querySelector(".errors").innerText = `${localStorage.getItem("lang") === "in" ? "ANDA HARUS MENGISI SEMUA BIDANG & MEMBERIKAN ID PESANAN YANG TEPAT!" : msg}`;
+    document.querySelector(".errors").innerText = `${localStorage.getItem("4unique-lang") === "in" ? "ANDA HARUS MENGISI SEMUA BIDANG & MEMBERIKAN ID PESANAN YANG TEPAT!" : msg}`;
 
     setTimeout(() => {
       document.querySelector(".errors").innerText = ``;
@@ -275,5 +275,5 @@ const setLanguage = (language) => {
   })
 }
 
-const langParams = localStorage.getItem("lang") || "en"
+const langParams = localStorage.getItem("4unique-lang") || "en"
 setLanguage(langParams)

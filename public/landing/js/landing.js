@@ -1,6 +1,6 @@
 window.onload = () => {
 
-    let user = JSON.parse(localStorage.getItem("user"));
+    let user = JSON.parse(localStorage.getItem("4unique-user"));
 
     if(user){
         window.location.href = "/home";
@@ -86,5 +86,5 @@ const translations = {
     })
   }
   
-  const langParams = localStorage.getItem("lang") || "en"
+  const langParams = localStorage.getItem("4unique-lang") || "en"
   setLanguage(langParams)

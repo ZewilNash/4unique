@@ -1,6 +1,6 @@
 
 window.onload = () => {
-    let user = JSON.parse(localStorage.getItem("user"));
+    let user = JSON.parse(localStorage.getItem("4unique-user"));
 
     if (!user) {
         window.location.href = "/loginpage";
@@ -27,7 +27,7 @@ document.querySelector("#create-btn").addEventListener("click", (event) => {
 })
 
 document.querySelector("#logout").addEventListener("click", () => {
-    localStorage.removeItem("user");
+    localStorage.removeItem("4unique-user");
     window.location.href = "/loginpage";
 })
 
@@ -366,7 +366,7 @@ document.querySelectorAll("#update-category-btn").forEach(cat => {
         e.preventDefault();
         const category = document.querySelector("#up_cat_name").value;
         const {categoryName} = e.target.dataset;
-        let user = JSON.parse(localStorage.getItem("user"));
+        let user = JSON.parse(localStorage.getItem("4unique-user"));
         let url = document.URL.split("4unique-admin")[0];
         let cat_img = url_images[0];
 
@@ -420,7 +420,7 @@ document.querySelectorAll("#delete_category").forEach(cat => {
     cat.addEventListener("click" , (e) => {
         // category-name
         const {categoryName} = e.target.dataset;
-        let user = JSON.parse(localStorage.getItem("user"));
+        let user = JSON.parse(localStorage.getItem("4unique-user"));
         let url = document.URL.split("4unique-admin")[0];
 
 
@@ -469,7 +469,7 @@ document.querySelectorAll("#delete_category").forEach(cat => {
 
 
 function createReview() {
-    let user = JSON.parse(localStorage.getItem("user"));
+    let user = JSON.parse(localStorage.getItem("4unique-user"));
 
     let food_id = document.querySelector("#food_id").value;
 
@@ -533,7 +533,7 @@ function createReview() {
 
 function createCategory() {
     // category image
-    let user = JSON.parse(localStorage.getItem("user"));
+    let user = JSON.parse(localStorage.getItem("4unique-user"));
     let category = document.querySelector("#cat_name").value;
 
     let image = url_images[0];
@@ -585,7 +585,7 @@ function createCategory() {
 }
 
 function createProduct() {
-    let user = JSON.parse(localStorage.getItem("user"));
+    let user = JSON.parse(localStorage.getItem("4unique-user"));
     let name = document.querySelector("#name").value;
     let price = document.querySelector("#price").value;
     let category = document.querySelector("#category").value;
@@ -654,7 +654,7 @@ function createProduct() {
 
 function updateCategory(categoryName,edit_cat){
     let url = document.URL.split("4unique-admin")[0];
-    let user = JSON.parse(localStorage.getItem("user"));
+    let user = JSON.parse(localStorage.getItem("4unique-user"));
     let image = url_images[0];
 
     axios.patch(String(url) + `api/v1/auth/update_category/${categoryName}`, {
@@ -708,7 +708,7 @@ function updateCategory(categoryName,edit_cat){
 
 // foodId , name , price , category , size , description
 function updateProduct(foodId , name , price , category , size , description) {
-    let user = JSON.parse(localStorage.getItem("user"));
+    let user = JSON.parse(localStorage.getItem("4unique-user"));
    
     
     let id_edit = foodId;
@@ -882,7 +882,7 @@ document.querySelectorAll("#delete_food").forEach(btn => {
         // logic add to vafourite
         let URL = document.URL.split("4unique-admin")[0];
 
-        const user = JSON.parse(localStorage.getItem("user"));
+        const user = JSON.parse(localStorage.getItem("4unique-user"));
 
         console.log(user.token);
 
@@ -930,7 +930,7 @@ document.querySelectorAll("#booked_order_show_more").forEach(btn => {
 
 
 
-        const user = JSON.parse(localStorage.getItem("user"));
+        const user = JSON.parse(localStorage.getItem("4unique-user"));
 
         let order_id = e.target.dataset.orderId;
 
@@ -1044,7 +1044,7 @@ function getSingleFood(id) {
 
 
 
-    const user = JSON.parse(localStorage.getItem("user"));
+    const user = JSON.parse(localStorage.getItem("4unique-user"));
 
     axios.patch(URL + `api/v1/products/${id}`, {}, {
         headers: {
@@ -1142,7 +1142,7 @@ document.querySelectorAll("#edit_booked_order_btn").forEach(btn => {
 
 
 
-            const user = JSON.parse(localStorage.getItem("user"));
+            const user = JSON.parse(localStorage.getItem("4unique-user"));
 
             let order_id_span = document.querySelector("#span_booked_order_id").innerText;
 
@@ -1182,7 +1182,7 @@ if(document.querySelector("#delete_booked_order")){
     
     
     
-        const user = JSON.parse(localStorage.getItem("user"));
+        const user = JSON.parse(localStorage.getItem("4unique-user"));
     
         let { orderId } = e.target.dataset;
     
@@ -1219,7 +1219,7 @@ document.querySelector("#booked_order_id_text").addEventListener("input", (e) =>
     let URL = document.URL.split("4unique-admin")[0];
 
 
-    const user = JSON.parse(localStorage.getItem("user"));
+    const user = JSON.parse(localStorage.getItem("4unique-user"));
 
     if (!text) {
         alert("enter id")
@@ -1270,7 +1270,7 @@ document.querySelector("#booked_order_id_text").addEventListener("input", (e) =>
 
 
 
-            const user = JSON.parse(localStorage.getItem("user"));
+            const user = JSON.parse(localStorage.getItem("4unique-user"));
 
             let { orderId } = e.target.dataset;
 
@@ -1306,7 +1306,7 @@ document.querySelector("#booked_order_id_text").addEventListener("input", (e) =>
 
 
 
-                const user = JSON.parse(localStorage.getItem("user"));
+                const user = JSON.parse(localStorage.getItem("4unique-user"));
 
                 let order_id = e.target.dataset.orderId;
 
@@ -1439,7 +1439,7 @@ document.querySelectorAll("#completedOrder_show_more").forEach(btn => {
 
 
 
-        const user = JSON.parse(localStorage.getItem("user"));
+        const user = JSON.parse(localStorage.getItem("4unique-user"));
 
         let order_id = e.target.dataset.orderId;
 
@@ -1539,7 +1539,7 @@ document.querySelectorAll("#completedOrder_delete").forEach(btn => {
         let URL = document.URL.split("4unique-admin")[0];
 
 
-        const user = JSON.parse(localStorage.getItem("user"));
+        const user = JSON.parse(localStorage.getItem("4unique-user"));
 
         let { orderId } = e.target.dataset;
 
@@ -1575,7 +1575,7 @@ document.querySelector("#delete_all_completed").addEventListener("click", (e) =>
 
 
 
-    const user = JSON.parse(localStorage.getItem("user"));
+    const user = JSON.parse(localStorage.getItem("4unique-user"));
 
 
 
@@ -1615,7 +1615,7 @@ document.querySelectorAll("#edit_user").forEach(btn => {
 
 
 
-        const user = JSON.parse(localStorage.getItem("user"));
+        const user = JSON.parse(localStorage.getItem("4unique-user"));
 
 
         axios.get(URL + `api/v1/auth/get_user/${userId}`, {
@@ -1676,7 +1676,7 @@ function updateUser(id, fullname, email, role) {
 
 
 
-    const user = JSON.parse(localStorage.getItem("user"));
+    const user = JSON.parse(localStorage.getItem("4unique-user"));
 
 
     axios.patch(URL + `api/v1/auth/update_user/${id}`, { fullname, email, role }, {
@@ -1711,7 +1711,7 @@ document.querySelectorAll("#delete_user").forEach(btn => {
 
 
 
-        const user = JSON.parse(localStorage.getItem("user"));
+        const user = JSON.parse(localStorage.getItem("4unique-user"));
 
 
         axios.delete(URL + `api/v1/auth/delete_user/${userId}`, {
@@ -1746,7 +1746,7 @@ document.querySelectorAll("#delete_report").forEach(btn => {
 
 
 
-        const user = JSON.parse(localStorage.getItem("user"));
+        const user = JSON.parse(localStorage.getItem("4unique-user"));
 
         let { orderId } = e.target.dataset;
 
@@ -1783,7 +1783,7 @@ document.querySelector("#report_text_Search").addEventListener("input", (e) => {
 
 
 
-    const user = JSON.parse(localStorage.getItem("user"));
+    const user = JSON.parse(localStorage.getItem("4unique-user"));
 
     let report_id = e.target.value;
 
@@ -1821,7 +1821,7 @@ document.querySelector("#report_text_Search").addEventListener("input", (e) => {
 
 
 
-                const user = JSON.parse(localStorage.getItem("user"));
+                const user = JSON.parse(localStorage.getItem("4unique-user"));
 
                 let { orderId } = e.target.dataset;
 
@@ -1867,7 +1867,7 @@ document.querySelectorAll("#delete_review").forEach(rev => {
 
 
 
-        const user = JSON.parse(localStorage.getItem("user"));
+        const user = JSON.parse(localStorage.getItem("4unique-user"));
 
 
 

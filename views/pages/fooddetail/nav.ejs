@@ -11,17 +11,17 @@
             <span></span>
         </label>
     </div>
-    <ul>
+    <ul id="nav_list" style="overflow-y: scroll;height: 700px;overflow-x: hidden;">
 
        
 
-        <li><a data-lang="discover" href="/food">ALL FOOD</a></li>
-        <li><a data-lang="egyptian" href="/food/egyptian%20food">EGYPTIAN</a></li>
-        <li><a data-lang="indonesian" href="/food/indonesian%20food">INDONESIAN</a></li>
-        <li><a data-lang="egyindo"  href="/food/egyindo%20food">EGYINDO</a></li>
+        <li><a data-lang="discover" href="/food">ALL PRODUCTS</a></li>
+        <li><a data-lang="tshirt" href="/food/tshirt">T-SHIRT</a></li>
+        <li><a data-lang="purse" href="/food/purse">PURSE</a></li>
+        <li><a data-lang="jacket"  href="/food/jacket">JACKET</a></li>
         
-        <li><a data-lang="vip" href="/food/vip%20food">VIP</a></li>
-        <li><a data-lang="desserts" href="/food/desserts">DESSERTS</a></li>
+        <li><a data-lang="hoodie" href="/food/hoodie">HOODIE</a></li>
+        <li><a data-lang="scrunchie" href="/food/scrunchie">SCRUNCHIE</a></li>
 
         <% for(var i = 0; i < categories.length; i++) { %>
             <li><a href="/food/<%= categories[i].category %>"><%= categories[i].category.toUpperCase() %></a></li>

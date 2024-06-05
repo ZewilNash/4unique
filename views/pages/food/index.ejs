@@ -79,9 +79,9 @@
 
                 <% } else if (msg){ %>
                     <div style="display: flex;justify-content: center;align-items: center;height: 100vh;width: 100vw;flex-direction: column;" class="container">
-                        <img src="./images/food.gif" alt="">
-                        <h1 style="text-align: center;" id="no-food"></h1>
-                        <a id="nofood-link" style="text-align: center;font-size: 20px;color: #000;" href="/food"></a>
+                        <img style="width: 300px;height: 300px;object-fit: cover;" src="./images/food.gif" alt="">
+                        <h1 style="text-align: center;color: #FF0000;" id="no-food"></h1>
+                        <a id="nofood-link" style="text-align: center;font-size: 20px;color: #FF0000;" href="/food"></a>
                     </div>
                 <% } else{ %>
                 <% for(var i = 0; i < products.length; i++) { %>

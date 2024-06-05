@@ -1,6 +1,6 @@
 window.onload = () => {
 
-    let user = JSON.parse(localStorage.getItem("user"));
+    let user = JSON.parse(localStorage.getItem("4unique-user"));
 
     if (user) {
         window.location.href = "/home";
@@ -68,11 +68,11 @@ function createUser(fullname, email, password) {
             token: token
         }
 
-        localStorage.setItem("user", JSON.stringify(userObj));
+        localStorage.setItem("4unique-user", JSON.stringify(userObj));
 
         document.querySelector("#signup-btn").disabled = true;
 
-        let HTML = `<p class="success-message">${localStorage.getItem("lang") === "in" ? "AKUN ANDA TELAH DIBUAT DENGAN SUKSES" : msg}</p>`;
+        let HTML = `<p class="success-message">${localStorage.getItem("4unique-lang") === "in" ? "AKUN ANDA TELAH DIBUAT DENGAN SUKSES" : msg}</p>`;
 
         document.querySelector("#success").innerHTML += HTML;
 
@@ -93,12 +93,12 @@ function createUser(fullname, email, password) {
         errors.forEach(err => {
 
             if (err.includes("FullName")) {
-                let HTML = `<p class="error-message">${localStorage.getItem("lang") === "in" ? `Anda Harus Memberikan Nama Lengkap
+                let HTML = `<p class="error-message">${localStorage.getItem("4unique-lang") === "in" ? `Anda Harus Memberikan Nama Lengkap
                 ` : err}</p>`;
 
                 document.querySelector("#errors").innerHTML += HTML;
             } else if (err.includes("PROVIDE AT LEAST 8 CHARACTERS FOR PASSWORD")) {
-                let HTML = `<p class="error-message">${localStorage.getItem("lang") === "in" ? `HARAP MEMBERIKAN MINIMAL 8 KARAKTER UNTUK PASSWORD
+                let HTML = `<p class="error-message">${localStorage.getItem("4unique-lang") === "in" ? `HARAP MEMBERIKAN MINIMAL 8 KARAKTER UNTUK PASSWORD
 
                 ` : err}</p>`;
 
@@ -106,19 +106,19 @@ function createUser(fullname, email, password) {
             }
 
             else if (err.includes("Email")) {
-                let HTML = `<p class="error-message">${localStorage.getItem("lang") === "in" ? `Anda Harus Memberikan Email
+                let HTML = `<p class="error-message">${localStorage.getItem("4unique-lang") === "in" ? `Anda Harus Memberikan Email
                 ` : err}</p>`;
 
                 document.querySelector("#errors").innerHTML += HTML;
             } else if (err.includes("Password")) {
-                let HTML = `<p class="error-message">${localStorage.getItem("lang") === "in" ? `Anda Harus Memberikan Kata Sandi
+                let HTML = `<p class="error-message">${localStorage.getItem("4unique-lang") === "in" ? `Anda Harus Memberikan Kata Sandi
 
                 ` : err}</p>`;
 
                 document.querySelector("#errors").innerHTML += HTML;
             }
             else if (err.includes("Duplicate")) {
-                let HTML = `<p class="error-message">${localStorage.getItem("lang") === "in" ? `KAMI MENEMUKAN EMAIL ANDA. SILAHKAN COBA LOGIN
+                let HTML = `<p class="error-message">${localStorage.getItem("4unique-lang") === "in" ? `KAMI MENEMUKAN EMAIL ANDA. SILAHKAN COBA LOGIN
 
                 ` : err}</p>`;
 
@@ -221,5 +221,5 @@ const setLanguage = (language) => {
     })
 }
 
-const langParams = localStorage.getItem("lang") || "en"
+const langParams = localStorage.getItem("4unique-lang") || "en"
 setLanguage(langParams)

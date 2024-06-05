@@ -3,7 +3,7 @@ window.onload = () => {
 
 
 
-  let user = JSON.parse(localStorage.getItem("user"));
+  let user = JSON.parse(localStorage.getItem("4unique-user"));
 
 
   if (!user) {
@@ -73,7 +73,7 @@ window.onload = () => {
       })
     }
 
-    const langParams = localStorage.getItem("lang") || "en"
+    const langParams = localStorage.getItem("4unique-lang") || "en"
     setLanguage(langParams)
 
   }).catch(err => {
@@ -90,11 +90,11 @@ const translations = {
     search: "Search Food By Name",
     discover: "DISCOVER ALL",
     categories: "CATEGORIES",
-    egyptian: "EGYPTIAN",
-    indonesian: "INSONESIAN",
-    egyindo: "EGYINDO",
-    vip: "VIP",
-    desserts: "DESSERTS",
+    tshirt: "T-SHIRT",
+    purse: "PURSE",
+    jacket: "JACKET",
+    hoodie: "HOODIE",
+    scrunchie: "SCRUNCHIE",
     about: "ABOUT",
     contact: "CONTACT",
     track: "TRACK YOUR ORDERS STATUS",
@@ -140,11 +140,11 @@ const translations = {
     search: "Cari Makanan Berdasarkan Nama",
     discover: "TEMUKAN SEMUA",
     categories: "KATEGORI",
-    egyptian: "MESIR",
-    indonesian: "INDONESIA",
-    egyindo: "MESIR&INDONESIA",
-    vip: "VIP",
-    desserts: "HIDANGAN PENUTUP",
+    tshirt: "KAOS",
+    purse: "TAS KECIL",
+    jacket: "JAKET",
+    hoodie: "TUDUNG",
+    scrunchie: "SCRUNCHIE",
     about: "TENTANG KAMI",
     // HUBUNGI KAMI
     contact: "HUBUNGI KAMI",
@@ -205,7 +205,7 @@ const setLanguage = (language) => {
   })
 }
 
-const langParams = localStorage.getItem("lang") || "en"
+const langParams = localStorage.getItem("4unique-lang") || "en"
 setLanguage(langParams)
 
 
@@ -213,11 +213,11 @@ setLanguage(langParams)
 document.querySelector("#logout").addEventListener("click", () => logout());
 
 function logout() {
-  localStorage.removeItem('user');
+  localStorage.removeItem('4unique-user');
   window.location.href = '/loginpage';
 }
 
-const user = JSON.parse(localStorage.getItem("user"));
+const user = JSON.parse(localStorage.getItem("4unique-user"));
 document.querySelectorAll("#remove_item").forEach(btn => {
   btn.addEventListener("click", (e) => {
     const userId = user.user._id;
@@ -232,7 +232,7 @@ document.querySelectorAll("#remove_item").forEach(btn => {
 
       const msg_data = res.data.msg;
 
-      document.querySelector(".success").innerText = `${localStorage.getItem("lang") === "in" ? "BARANG BERHASIL DIHAPUS DARI KERANJANG" : msg_data}`;
+      document.querySelector(".success").innerText = `${localStorage.getItem("4unique-lang") === "in" ? "BARANG BERHASIL DIHAPUS DARI KERANJANG" : msg_data}`;
 
 
       setTimeout(() => {
@@ -245,7 +245,7 @@ document.querySelectorAll("#remove_item").forEach(btn => {
       const msg = err.response.data.msg;
 
       // do something
-      document.querySelector(".error").innerText = `${localStorage.getItem("lang") === "in" ? "ADA YANG SALAH COBA LAGI KEMUDIAN" : msg}`;
+      document.querySelector(".error").innerText = `${localStorage.getItem("4unique-lang") === "in" ? "ADA YANG SALAH COBA LAGI KEMUDIAN" : msg}`;
 
       setTimeout(() => {
         document.querySelector(".error").innerText = ``;
@@ -256,7 +256,7 @@ document.querySelectorAll("#remove_item").forEach(btn => {
   })
 })
 
-// const user = JSON.parse(localStorage.getItem("user"));
+// const user = JSON.parse(localStorage.getItem("4unique-user"));
 document.querySelectorAll("#update_qty_container").forEach(elem => {
 
   let btn = elem.querySelector("#update_item");
@@ -269,7 +269,7 @@ document.querySelectorAll("#update_qty_container").forEach(elem => {
       const myPopup = new Popup({
         id: "my-popup",
         title: "FOOD4UNIQUE",
-        content: `${localStorage.getItem("lang") === "in" ? "MINIMAL UNTUK TAMBAHKAN KE KERANJANG ADALAH 1" : "THE MINIMUM TO ADD TO CART IS 1"}`,
+        content: `${localStorage.getItem("4unique-lang") === "in" ? "MINIMAL UNTUK TAMBAHKAN KE KERANJANG ADALAH 1" : "THE MINIMUM TO ADD TO CART IS 1"}`,
         showImmediately: true,
         textColor: "red"
       });
@@ -291,7 +291,7 @@ document.querySelectorAll("#update_qty_container").forEach(elem => {
 
         const msg_data = res.data.msg;
 
-        document.querySelector(".success").innerText = `${localStorage.getItem("lang") === "in" ? "JUMLAH BARANG BERHASIL DIPERBARUI" : msg_data}`;
+        document.querySelector(".success").innerText = `${localStorage.getItem("4unique-lang") === "in" ? "JUMLAH BARANG BERHASIL DIPERBARUI" : msg_data}`;
 
 
         setTimeout(() => {
@@ -304,7 +304,7 @@ document.querySelectorAll("#update_qty_container").forEach(elem => {
         const msg = err.response.data.msg;
 
         // do something
-        document.querySelector(".error").innerText = `${localStorage.getItem("lang") === "in" ? "ADA YANG SALAH COBA LAGI KEMUDIAN" : msg}`;
+        document.querySelector(".error").innerText = `${localStorage.getItem("4unique-lang") === "in" ? "ADA YANG SALAH COBA LAGI KEMUDIAN" : msg}`;
 
         setTimeout(() => {
           document.querySelector(".error").innerText = ``;
@@ -332,7 +332,7 @@ document.querySelector("#back-to-cart").addEventListener("click", (e) => {
 
 // --------------------------------------
 document.querySelector("#auto_fill_btn").addEventListener("click", (e) => {
-  e.target.innerText = localStorage.getItem("lang") === "in" ? "TUNGGU SEBENTAR..." : "WAIT A MOMENT..."
+  e.target.innerText = localStorage.getItem("4unique-lang") === "in" ? "TUNGGU SEBENTAR..." : "WAIT A MOMENT..."
   e.target.disabled = true;
 
 
@@ -361,7 +361,7 @@ document.querySelector("#auto_fill_btn").addEventListener("click", (e) => {
           document.querySelector("#order_leisure").value = leisure ? leisure : "";
           document.querySelector("#order_email").value = user.user.email;
           document.querySelector("#order_name").value = user.user.fullname;
-          e.target.innerText = localStorage.getItem("lang") === "in" ? "Tunggu 10 menit untuk menggunakannya kembali" : "Wait 10 minutes to use it again"
+          e.target.innerText = localStorage.getItem("4unique-lang") === "in" ? "Tunggu 10 menit untuk menggunakannya kembali" : "Wait 10 minutes to use it again"
         }, 1500)
 
         setTimeout(() => {
@@ -374,7 +374,7 @@ document.querySelector("#auto_fill_btn").addEventListener("click", (e) => {
         const myPopup = new Popup({
           id: "my-popup",
           title: "FOOD4UNIQUE",
-          content: `${localStorage.getItem("lang") === "in" ? "LAYANAN OTOMATIS TIDAK BERFUNGSI, COBA LAGI NANTI!" : "AUTOMATIC SERVICE IS NOT WORKING , TRY AGAIN LATER!"}`,
+          content: `${localStorage.getItem("4unique-lang") === "in" ? "LAYANAN OTOMATIS TIDAK BERFUNGSI, COBA LAGI NANTI!" : "AUTOMATIC SERVICE IS NOT WORKING , TRY AGAIN LATER!"}`,
           showImmediately: true,
           textColor: "red"
         });
@@ -462,7 +462,7 @@ function BOOKOrder(user_id, name, email, phone, address, zip_code, state, countr
 function makeOrder(user_id, name, email, phone, address, zip_code, state, country, road = "", village = "", leisure = "", status, isPaid) {
 
 
-  // const user = JSON.parse(localStorage.getItem("user"));
+  // const user = JSON.parse(localStorage.getItem("4unique-user"));
   let URL = document.URL.split("cart")[0];
 
   axios.get(URL + `api/v1/auth/get_cart/${user_id}`, {
@@ -669,7 +669,7 @@ isPaid
 */
 
 function deleteCart() {
-  let user_ob = JSON.parse(localStorage.getItem("user"));
+  let user_ob = JSON.parse(localStorage.getItem("4unique-user"));
   let URL = document.URL.split("cart")[0];
   axios.delete(URL + `api/v1/auth/delete_cart/${user_ob.user._id}`, {
     headers: {
@@ -704,7 +704,7 @@ document.querySelector("#order_phone").addEventListener("focusout", (event) => {
     const myPopup = new Popup({
       id: "my-popup",
       title: "FOOD4UNIQUE",
-      content: `${localStorage.getItem("lang") === "in" ? `HARAP MASUKKAN NOMOR YANG VALID (CONTOH:+62212341234)
+      content: `${localStorage.getItem("4unique-lang") === "in" ? `HARAP MASUKKAN NOMOR YANG VALID (CONTOH:+62212341234)
       ` : "PLEASE ENTER A VALID NUMBER (EX:+62212341234)"}`,
       showImmediately: true,
       textColor: "red"
@@ -730,7 +730,7 @@ document.querySelectorAll("#update_qty").forEach(btn => {
       const myPopup = new Popup({
         id: "my-popup",
         title: "FOOD4UNIQUE",
-        content: `${localStorage.getItem("lang") === "in" ? "MINIMAL UNTUK TAMBAHKAN KE KERANJANG ADALAH 1" : "THE MINIMUM TO ADD TO CART IS 1"}`,
+        content: `${localStorage.getItem("4unique-lang") === "in" ? "MINIMAL UNTUK TAMBAHKAN KE KERANJANG ADALAH 1" : "THE MINIMUM TO ADD TO CART IS 1"}`,
         showImmediately: true,
         textColor: "red"
       });
@@ -747,7 +747,7 @@ document.querySelectorAll("#update_qty").forEach(btn => {
         id: "my-popup",
         title: "FOOD4UNIQUE",
         content: `
-        ${localStorage.getItem("lang") === "in" ? "MINIMAL UNTUK TAMBAHKAN KE KERANJANG ADALAH 1" : "THE MINIMUM TO ADD TO CART IS 1"}`,
+        ${localStorage.getItem("4unique-lang") === "in" ? "MINIMAL UNTUK TAMBAHKAN KE KERANJANG ADALAH 1" : "THE MINIMUM TO ADD TO CART IS 1"}`,
         showImmediately: true,
         textColor: "red"
       });
@@ -773,7 +773,7 @@ document.querySelector("#order_email").addEventListener("focusout", (event) => {
     const myPopup = new Popup({
       id: "my-popup",
       title: "FOOD4UNIQUE",
-      content: `${localStorage.getItem("lang") === "in" ? "HARAP MASUKKAN EMIAL YANG VALID (Contoh:example@email.com)" : "PLEASE ENTER A VALID EMIAL (EX:example@email.com)"}`,
+      content: `${localStorage.getItem("4unique-lang") === "in" ? "HARAP MASUKKAN EMIAL YANG VALID (Contoh:example@email.com)" : "PLEASE ENTER A VALID EMIAL (EX:example@email.com)"}`,
       showImmediately: true,
       textColor: "red"
     });
@@ -799,7 +799,7 @@ document.querySelector("#order_name").addEventListener("focusout", (event) => {
     const myPopup = new Popup({
       id: "my-popup",
       title: "FOOD4UNIQUE",
-      content: `${localStorage.getItem("lang") === "in" ? `
+      content: `${localStorage.getItem("4unique-lang") === "in" ? `
       HARAP MASUKKAN NAMA YANG VALID (CONTOH: John Doe)` : "PLEASE ENTER A VALID NAME (EX:John Doe)"}`,
       showImmediately: true,
       textColor: "red"
@@ -932,7 +932,7 @@ document.querySelector("#pay-button_book").addEventListener("click", (e) => {
         const myPopup = new Popup({
           id: "my-popup",
           title: "FOOD4UNIQUE",
-          content: `${localStorage.getItem("lang") === "in" ? `Menunggu Pembayaran Anda
+          content: `${localStorage.getItem("4unique-lang") === "in" ? `Menunggu Pembayaran Anda
           ` : "Waiting Your Payment"}`,
           showImmediately: true,
           textColor: "red"
@@ -949,7 +949,7 @@ document.querySelector("#pay-button_book").addEventListener("click", (e) => {
           id: "my-popup",
           title: "FOOD4UNIQUE",
           content: `
-           ${localStorage.getItem("lang") === "in" ? `Pembayaran gagal
+           ${localStorage.getItem("4unique-lang") === "in" ? `Pembayaran gagal
            ` : "Payment Failed"}`,
           showImmediately: true,
           textColor: "red"
@@ -966,7 +966,7 @@ document.querySelector("#pay-button_book").addEventListener("click", (e) => {
           id: "my-popup",
           title: "FOOD4UNIQUE",
           content: `
-            ${localStorage.getItem("lang") === "in" ? `Anda menutup popup tanpa menyelesaikan pembayaran!
+            ${localStorage.getItem("4unique-lang") === "in" ? `Anda menutup popup tanpa menyelesaikan pembayaran!
             ` : "you closed the popup without finishing the payment!"}`,
           showImmediately: true,
           textColor: "red"
@@ -986,7 +986,7 @@ document.querySelector("#pay-button_book").addEventListener("click", (e) => {
     const myPopup = new Popup({
       id: "my-popup",
       title: "FOOD4UNIQUE",
-      content: `${localStorage.getItem("lang") === "in" ? "HARAP MEMBERIKAN DETAIL PESANAN YANG HILANG (wajib: email, nama, telepon, alamat, tanggal, waktu)":"PLEASE PROVIDE ALL MISSING ORDER DETAILS (required: email , name , phone , address,date,time)"}`,
+      content: `${localStorage.getItem("4unique-lang") === "in" ? "HARAP MEMBERIKAN DETAIL PESANAN YANG HILANG (wajib: email, nama, telepon, alamat, tanggal, waktu)":"PLEASE PROVIDE ALL MISSING ORDER DETAILS (required: email , name , phone , address,date,time)"}`,
       showImmediately: true,
       textColor: "red"
     });

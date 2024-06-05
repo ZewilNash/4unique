@@ -13,6 +13,10 @@
     font-family: "Roboto", sans-serif !important;
     font-weight: 400;
     font-style: normal;
+    background-image: url("../images/bg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
   
   a {
@@ -54,7 +58,7 @@
     position: absolute;
     height: 4px;
     width: 40px;
-    background: #b3b3b3;
+    background: #FF0000;
   }
   .offcanvas-menu label span::before {
     transform: translateY(-12px);
@@ -206,6 +210,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
+    width: 100vw;
 }
 
 .food-container{

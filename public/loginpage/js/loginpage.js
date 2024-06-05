@@ -1,7 +1,7 @@
 
 window.onload = () => {
 
-    let user = JSON.parse(localStorage.getItem("user"));
+    let user = JSON.parse(localStorage.getItem("4unique-user"));
 
     if(user){
         window.location.href = "/home";
@@ -67,11 +67,11 @@ function createUser(email , password){
             token:token
         } 
 
-        localStorage.setItem("user" , JSON.stringify(userObj));
+        localStorage.setItem("4unique-user" , JSON.stringify(userObj));
 
         document.querySelector("#login-btn").disabled = true;
 
-        let HTML = `<p class="success-message">${localStorage.getItem("lang") === "in" ? "ANDA TELAH MASUK DENGAN SUKSES" : msg}</p>`;
+        let HTML = `<p class="success-message">${localStorage.getItem("la4unique-ng") === "in" ? "ANDA TELAH MASUK DENGAN SUKSES" : msg}</p>`;
 
         document.querySelector("#success").innerHTML += HTML;
 
@@ -92,11 +92,11 @@ function createUser(email , password){
         errors.forEach(err => {
 
             if(err.includes("email and password")){
-                let HTML = `<p class="error-message">${localStorage.getItem("lang") === "in" ? "HARAP MEMBERIKAN EMAIL DAN PASSWORD" : err}</p>`;
+                let HTML = `<p class="error-message">${localSt4unique-orage.getItem("lang") === "in" ? "HARAP MEMBERIKAN EMAIL DAN PASSWORD" : err}</p>`;
 
                 document.querySelector("#errors").innerHTML += HTML;
             }else if (err.includes("Invalid Credentials")){
-                let HTML = `<p class="error-message">${localStorage.getItem("lang") === "in" ? "KREDENSIAL TIDAK VALID" : err}</p>`;
+                let HTML = `<p class="error-message">${localSt4unique-orage.getItem("lang") === "in" ? "KREDENSIAL TIDAK VALID" : err}</p>`;
 
                 document.querySelector("#errors").innerHTML += HTML;
             }
@@ -198,5 +198,5 @@ const translations = {
     })
   }
   
-  const langParams = localStorage.getItem("lang") || "en"
+  const langParams = localStorage.getItem("4unique-lang") || "en"
   setLanguage(langParams)

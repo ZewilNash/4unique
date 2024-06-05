@@ -1,6 +1,6 @@
 window.onload = () => {
 
-    let user = JSON.parse(localStorage.getItem("user"));
+    let user = JSON.parse(localStorage.getItem("4unique-user"));
   
     // if(user_Cart.length > 0){
     //     window.location.href = "/loginpage";
@@ -73,7 +73,7 @@ window.onload = () => {
           })
         }
         
-        const langParams = localStorage.getItem("lang") || "en"
+        const langParams = localStorage.getItem("4unique-lang") || "en"
         setLanguage(langParams)
 
     }).catch(err => {
@@ -85,7 +85,7 @@ window.onload = () => {
   document.querySelector("#logout").addEventListener("click" , () => logout());
 
 function logout() {
-    localStorage.removeItem('user');
+    localStorage.removeItem('4unique-user');
     window.location.href = '/loginpage';
 }
 
@@ -96,11 +96,11 @@ const translations = {
     search: "Search Food By Name",
     discover: "DISCOVER ALL",
     categories: "CATEGORIES",
-    egyptian: "EGYPTIAN",
-    indonesian: "INDONESIAN",
-    egyindo: "EGYINDO",
-    vip: "VIP",
-    desserts: "DESSERTS",
+    tshirt: "T-SHIRT",
+    purse: "PURSE",
+    jacket: "JACKET",
+    hoodie: "HOODIE",
+    scrunchie: "SCRUNCHIE",
     about: "ABOUT",
     contact: "CONTACT",
     track: "TRACK YOUR ORDERS STATUS",
@@ -130,11 +130,11 @@ const translations = {
     search: "Cari Makanan Berdasarkan Nama",
     discover: "TEMUKAN SEMUA",
     categories: "KATEGORI",
-    egyptian: "MESIR",
-    indonesian: "INDONESIA",
-    egyindo: "MESIR&INDONESIA",
-    vip: "VIP",
-    desserts: "HIDANGAN PENUTUP",
+    tshirt: "KAOS",
+    purse: "TAS KECIL",
+    jacket: "JAKET",
+    hoodie: "TUDUNG",
+    scrunchie: "SCRUNCHIE",
     about: "TENTANG KAMI",
     // HUBUNGI KAMI
     contact: "HUBUNGI KAMI",
@@ -180,5 +180,5 @@ const setLanguage = (language) => {
   })
 }
 
-const langParams = localStorage.getItem("lang") || "en"
+const langParams = localStorage.getItem("4unique-lang") || "en"
 setLanguage(langParams)

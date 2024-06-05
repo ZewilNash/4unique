@@ -1,6 +1,6 @@
 window.onload = () => {
     // get_user_orders
-        let user = JSON.parse(localStorage.getItem("user"));
+        let user = JSON.parse(localStorage.getItem("4unique-user"));
     
         
     
@@ -43,7 +43,7 @@ window.onload = () => {
                 })
               }
           
-              const langParams = localStorage.getItem("lang") || "en"
+              const langParams = localStorage.getItem("4unique-lang") || "en"
               setLanguage(langParams)
 
         }).catch(err => {
@@ -110,7 +110,7 @@ window.onload = () => {
 document.querySelector("#logout").addEventListener("click" , () => logout());
 
 function logout() {
-    localStorage.removeItem('user');
+    localStorage.removeItem('4unique-user');
     window.location.href = '/loginpage';
 }
 
@@ -134,11 +134,11 @@ const translations = {
       search: "Search Food By Name",
       discover: "DISCOVER ALL",
       categories: "CATEGORIES",
-      egyptian: "EGYPTIAN",
-      indonesian: "INDONESIAN",
-      egyindo: "EGYINDO",
-      vip: "VIP",
-      desserts: "DESSERTS",
+      tshirt: "T-SHIRT",
+      purse: "PURSE",
+      jacket: "JACKET",
+      hoodie: "HOODIE",
+      scrunchie: "SCRUNCHIE",
       about: "ABOUT",
       contact: "CONTACT",
       track: "TRACK YOUR ORDERS STATUS",
@@ -149,11 +149,11 @@ const translations = {
       order_1:"ORDER ID:",
       order_2:"ORDER MADE AT :",
       order_3:"ORDER NUMBER :",
-      order_4:"WE BOOKED YOUR FOOD IT WILL BE READY ON TIME",
+      order_4:"WE BOOKED YOUR PRODUCT IT WILL BE READY ON TIME",
       order_5:"ORDER DATE:",
       order_6:"ORDER TIME:",
-      order_7:"WHEN YOUR FOOD IS READY WE WILL INFORM YOU",
-      order_8:"ALWAYS COME HERE & REFRESH THE PAGE TO CHECK YOUR FOOD STATUS",
+      order_7:"WHEN YOUR PRODUCT IS READY WE WILL INFORM YOU",
+      order_8:"ALWAYS COME HERE & REFRESH THE PAGE TO CHECK YOUR PRODUCT STATUS",
       order_9:"YOUR ORDER IS READY PLEASE COME TO TAKE IT",
       order_10:"YOUR ORDER NUMBER IS :",
       order_16:"ORDER CONTAINS",
@@ -164,11 +164,11 @@ const translations = {
       search: "Cari Makanan Berdasarkan Nama",
       discover: "TEMUKAN SEMUA",
       categories: "KATEGORI",
-      egyptian: "MESIR",
-      indonesian: "INDONESIA",
-      egyindo: "MESIR&INDONESIA",
-      vip: "VIP",
-      desserts: "HIDANGAN PENUTUP",
+      tshirt: "KAOS",
+      purse: "TAS KECIL",
+      jacket: "JAKET",
+      hoodie: "TUDUNG",
+      scrunchie: "SCRUNCHIE",
       about: "TENTANG KAMI",
       // HUBUNGI KAMI
       contact: "HUBUNGI KAMI",
@@ -182,11 +182,11 @@ const translations = {
       order_1:"ID PEMESANAN:",
       order_2:"PESANAN DIBUAT DI :",
       order_3:"JUMLAH ORDER :",
-      order_4:`KAMI MEMESAN MAKANAN ANDA AKAN SIAP TEPAT WAKTU`,
+      order_4:`KAMI MEMESAN PRODUK ANDA AKAN SIAP TEPAT WAKTU`,
       order_5:"TANGGAL PEMESANAN:",
       order_6:"WAKTU PESANAN:",
-      order_7:"JIKA MAKANAN ANDA SIAP, KAMI AKAN MENGINFORMASIKAN ANDA",
-      order_8:"SELALU DATANG KE SINI & SEGARKAN HALAMAN UNTUK MEMERIKSA STATUS MAKANAN ANDA",
+      order_7:"JIKA PRODUK ANDA SIAP, KAMI AKAN INFORMASIKAN",
+      order_8:"SELALU DATANG KE SINI & SEGARKAN HALAMAN UNTUK MEMERIKSA STATUS PRODUK ANDA",
       order_9:"PESANAN ANDA SUDAH SILAHKAN DATANG UNTUK MENGAMBILNYA",
       order_10:`NOMOR PESANAN ANDA ADALAH :
       `,
@@ -210,5 +210,5 @@ const translations = {
     })
   }
   
-  const langParams = localStorage.getItem("lang") || "en"
+  const langParams = localStorage.getItem("4unique-lang") || "en"
   setLanguage(langParams)
