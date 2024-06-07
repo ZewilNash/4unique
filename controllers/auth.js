@@ -75,7 +75,7 @@ const deleteFromCart = async (req,res) => {
     const findCart = await Cart.find({user:user._id , food:foodId});
 
     if(findCart.length === 0){
-        return res.status(404).json({msg:"Food Not Found" , success:false});
+        return res.status(404).json({msg:"Product Not Found" , success:false});
     }
 
     await Cart.findOneAndDelete({user:user._id , food:foodId} , {useFindAndModify:false});
@@ -95,7 +95,7 @@ const updateCartQty = async (req,res) => {
     const findCart = await Cart.find({user:user._id , food:foodId});
 
     if(findCart.length === 0){
-        return res.status(404).json({msg:"Food Not Found" , success:false});
+        return res.status(404).json({msg:"Product Not Found" , success:false});
     }
 
     await Cart.findOneAndUpdate({user:user._id , food:foodId} , {qty:Number(req.body.qty)} , {useFindAndModify:false});
@@ -469,7 +469,7 @@ const makeReview = async (req,res) => {
 
     
     if(food.lenght === 0){
-        return res.status(404).json({msg:"Food Not Found" , success:false});
+        return res.status(404).json({msg:"Product Not Found" , success:false});
     }
 
     const review = await FoodReview.create({
@@ -485,7 +485,7 @@ const getFoodReviews = async (req,res) => {
     const food = await Food.find({_id:id});
 
     if(food.lenght === 0){
-        return res.status(404).json({msg:"Food Not Found" , success:false});
+        return res.status(404).json({msg:"Product Not Found" , success:false});
     }
 
     const reviews = await FoodReview.find({food:id});

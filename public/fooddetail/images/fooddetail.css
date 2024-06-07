@@ -54,7 +54,7 @@
     position: absolute;
     height: 4px;
     width: 40px;
-    background: #b3b3b3;
+    background: #FF0000;
   }
   .offcanvas-menu label span::before {
     transform: translateY(-12px);

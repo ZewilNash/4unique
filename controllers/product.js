@@ -37,7 +37,7 @@ const updateProduct = async (req,res) => {
     }
 
     if(!edit_product){
-        return res.status(404).json({msg:"No Food Found!" , success:false})
+        return res.status(404).json({msg:"No Product Found!" , success:false})
     }
 
     const product = await Product.findOneAndUpdate({_id:foodId} , {$set:{name,price,category,size,description,images}} , {new:true})
@@ -144,10 +144,10 @@ const getSingleFood = async (req,res) => {
 
 
     if(!food){
-        return res.status(404).json({msg:"No Food Found!" , success:false})
+        return res.status(404).json({msg:"No Product Found!" , success:false})
     }
 
-    res.status(200).json({food , msg:"food found" , success:true});
+    res.status(200).json({food , msg:"Product found" , success:true});
 }
 
 const addToCart = async (req,res) => {
@@ -159,7 +159,7 @@ const addToCart = async (req,res) => {
 
 
     if(!user || !product){
-        return res.status(404).json({msg:"No Food Found!" , success:false})
+        return res.status(404).json({msg:"No Product Found!" , success:false})
     }
 
   
